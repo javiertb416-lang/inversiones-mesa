@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Debida Diligencia LAFT — Luis Orlando Padierna Peña</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy-900: #050E1A;
+    --navy-800: #0A1628;
+    --navy-700: #0F2040;
+    --navy-600: #13294B;
+    --navy-500: #1D3F6F;
+    --navy-400: #2E6DA4;
+    --navy-300: #5B9BD5;
+    --navy-100: #D6E4F0;
+    --navy-050: #EBF3FA;
+    --white:    #FFFFFF;
+    --silver:   #F0F4F8;
+    --line:     #C5CDD6;
+    --text:     #0A1628;
+    --text-mid: #3A4F6A;
+    --text-soft:#6B7C93;
+    --red-dark: #7A1A1A;
+    --red-mid:  #8B1A1A;
+    --red-bg:   #FAF0F0;
+    --amber:    #7A4A00;
+    --amber-bg: #FDF6E8;
+    --green:    #1B5E20;
+    --green-bg: #EBF5EB;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--silver);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ──────────────────────────────────────── */
+  .hero {
+    background: var(--navy-800);
+    padding: 56px 48px 44px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--navy-400);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 40%;
+    background: linear-gradient(135deg, transparent 40%, rgba(46,109,164,0.06) 100%);
+    pointer-events: none;
+  }
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red-mid);
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 5px 14px;
+    border-radius: 2px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    color: var(--navy-300);
+    font-style: normal;
+  }
+  .hero-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 48px;
+  }
+  .risk-meter { min-width: 200px; text-align: center; }
+
+  /* ── IDENTITY CARD ─────────────────────────────── */
+  .id-card {
+    background: var(--navy-700);
+    border-bottom: 1px solid var(--navy-500);
+    padding: 24px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px 32px;
+  }
+  .id-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--navy-300);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .id-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    word-break: break-word;
+    hyphens: auto;
+    line-height: 1.4;
+  }
+  .id-value.danger { color: #FF8080; }
+  .id-value.warning { color: #FFD580; }
+
+  /* ── NAV ───────────────────────────────────────── */
+  .nav-tabs {
+    display: flex;
+    background: var(--navy-900);
+    border-bottom: 2px solid var(--navy-500);
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display:none; }
+  .nav-tab {
+    padding: 15px 22px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    top: 2px;
+  }
+  .nav-tab:hover { color: rgba(255,255,255,0.8); }
+  .nav-tab.active {
+    color: var(--white);
+    border-bottom-color: var(--navy-300);
+  }
+
+  /* ── SECTIONS ──────────────────────────────────── */
+  .section {
+    display: none;
+    padding: 44px 48px;
+    max-width: 1080px;
+    margin: 0 auto;
+    animation: fadeIn 0.25s ease;
+  }
+  .section.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .sec-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--navy-600);
+    border: 1px solid var(--navy-400);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .sec-desc {
+    color: var(--text-mid);
+    font-size: 13.5px;
+    margin-bottom: 28px;
+    line-height: 1.65;
+    margin-left: 52px;
+  }
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin-bottom: 28px;
+  }
+
+  /* ── ALERT BOXES ───────────────────────────────── */
+  .alert {
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    border-left: 4px solid;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .alert-red    { background: var(--red-bg);   border-color: var(--red-mid);  }
+  .alert-amber  { background: var(--amber-bg); border-color: var(--amber);    }
+  .alert-blue   { background: var(--navy-050); border-color: var(--navy-400); }
+  .alert-icon   { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .alert-title  { font-weight: 700; font-size: 13px; margin-bottom: 5px; }
+  .alert-text   { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+  .alert-red   .alert-title { color: var(--red-dark); }
+  .alert-amber .alert-title { color: var(--amber); }
+  .alert-blue  .alert-title { color: var(--navy-500); }
+
+  /* ── CARDS ─────────────────────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 2px 12px rgba(13,27,42,0.08); }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .card-value {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.55;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-red    { background: var(--red-bg);    color: var(--red-mid);  border: 1px solid rgba(139,26,26,0.25); }
+  .badge-amber  { background: var(--amber-bg);  color: var(--amber);    border: 1px solid rgba(122,74,0,0.25); }
+  .badge-green  { background: var(--green-bg);  color: var(--green);    border: 1px solid rgba(27,94,32,0.25); }
+  .badge-blue   { background: var(--navy-050);  color: var(--navy-500); border: 1px solid rgba(46,109,164,0.3); }
+  .badge-gray   { background: var(--silver);    color: var(--text-soft);border: 1px solid var(--line); }
+
+  /* ── DATA TABLE ────────────────────────────────── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 24px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .data-table th {
+    background: var(--navy-800);
+    color: var(--white);
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--text-mid);
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: var(--navy-050); }
+  .data-table tr.row-red td { background: var(--red-bg); }
+  .data-table tr.row-amber td { background: var(--amber-bg); }
+  .data-table tr.row-green td { background: var(--green-bg); }
+
+  /* ── TIMELINE ──────────────────────────────────── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy-300), var(--navy-600));
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 14px;
+    padding: 13px 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -25px; top: 50%;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+  .tl-item.normal::before  { background: var(--navy-300); border-color: var(--navy-300); }
+  .tl-item.warning::before { background: var(--amber);    border-color: var(--amber); }
+  .tl-item.critical::before {
+    background: var(--red-mid); border-color: var(--red-mid);
+    box-shadow: 0 0 6px rgba(139,26,26,0.4);
+  }
+  .tl-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-soft);
+    margin-bottom: 3px;
+  }
+  .tl-text { font-size: 13px; font-weight: 500; color: var(--text-mid); line-height: 1.5; }
+  .tl-item.critical .tl-text { color: var(--red-dark); font-weight: 600; }
+
+  /* ── CHART WRAPPER ─────────────────────────────── */
+  .chart-wrap {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .chart-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Bar chart */
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  .bar-col { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
+  .bar {
+    width: 100%; border-radius: 3px 3px 0 0;
+    transition: opacity 0.2s;
+    min-height: 3px;
+    cursor: default;
+  }
+  .bar-label { font-size: 9.5px; color: var(--text-soft); text-align: center; line-height: 1.3; }
+  .bar-value { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text); font-weight: 600; }
+
+  /* Donut */
+  .donut-wrap { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+  .donut-legend { flex: 1; min-width: 160px; }
+  .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: var(--text-mid); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── CONCLUSION ────────────────────────────────── */
+  .conclusion-box {
+    background: var(--red-bg);
+    border: 2px solid var(--red-mid);
+    border-radius: 8px;
+    padding: 28px 32px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .conclusion-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--red-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+  .conclusion-box p {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .actions-list { display: flex; flex-direction: column; gap: 10px; }
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 14px 16px;
+  }
+  .action-num {
+    width: 28px; height: 28px;
+    background: var(--navy-600);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .action-title { font-size: 13.5px; font-weight: 700; margin-bottom: 3px; color: var(--text); }
+  .action-detail { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; overflow-wrap: break-word; hyphens: auto; }
+  .action-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--red-bg);
+    color: var(--red-dark);
+    border: 1px solid rgba(139,26,26,0.25);
+    align-self: flex-start;
+    flex-shrink: 0;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+  .action-tag.blue { background: var(--navy-050); color: var(--navy-500); border-color: rgba(46,109,164,0.3); }
+
+  /* ── META BLOCK ────────────────────────────────── */
+  .meta-block {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 16px;
+    font-size: 12px;
+  }
+  .meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .meta-value { color: var(--text-mid); font-weight: 500; line-height: 1.4; word-break: break-word; }
+  .meta-value.danger { color: var(--red-dark); font-weight: 700; }
+
+  /* ── FOOTER ────────────────────────────────────── */
+  .footer {
+    text-align: center;
+    padding: 28px 48px;
+    background: var(--navy-900);
+    color: rgba(255,255,255,0.35);
+    font-size: 11px;
+    line-height: 1.9;
+    font-family: 'IBM Plex Mono', monospace;
+    border-top: 2px solid var(--navy-500);
+  }
+
+  @media(max-width:640px) {
+    .hero, .section, .id-card { padding-left: 20px; padding-right: 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .risk-meter { display: none; }
+    .sec-desc { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-label">⚠ Nivel de riesgo: Extremo</div>
+  <div class="hero-grid">
+    <div>
+      <h1>Informe de <em>Debida Diligencia</em><br>Intensificada — LAFT</h1>
+      <div class="hero-meta">CC 15.441.176 &nbsp;·&nbsp; Luis Orlando Padierna Peña &nbsp;·&nbsp; 28 Mar 2026 &nbsp;·&nbsp; Tusdatos.co</div>
+    </div>
+    <div class="risk-meter">
+      <canvas id="gaugeCanvas" width="190" height="130"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FICHA DE IDENTIDAD ────────────────────────────────── -->
+<div class="id-card">
+  <div>
+    <div class="id-label">Nombre completo</div>
+    <div class="id-value">Luis Orlando Padierna Peña</div>
+  </div>
+  <div>
+    <div class="id-label">Cédula de ciudadanía</div>
+    <div class="id-value">15.441.176</div>
+  </div>
+  <div>
+    <div class="id-label">Alias conocidos</div>
+    <div class="id-value warning">"Inglaterra" / "El Viejo"</div>
+  </div>
+  <div>
+    <div class="id-label">Lugar y fecha de nacimiento</div>
+    <div class="id-value">Carepa, Antioquia — 26 Ene 1979</div>
+  </div>
+  <div>
+    <div class="id-label">Estado del documento</div>
+    <div class="id-value danger">Cancelada por Muerte</div>
+  </div>
+  <div>
+    <div class="id-label">Fecha de fallecimiento</div>
+    <div class="id-value danger">23 de noviembre de 2017</div>
+  </div>
+  <div>
+    <div class="id-label">Tipo de diligencia</div>
+    <div class="id-value danger">Intensificada</div>
+  </div>
+  <div>
+    <div class="id-label">Nivel de riesgo LAFT</div>
+    <div class="id-value danger">Extremo</div>
+  </div>
+</div>
+
+<!-- ─── NAVEGACIÓN ────────────────────────────────────────── -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('listas',this)">Listas Restrictivas</button>
+  <button class="nav-tab" onclick="showTab('antecedentes',this)">Antecedentes Colombia</button>
+  <button class="nav-tab" onclick="showTab('perfil',this)">Perfil Criminal</button>
+  <button class="nav-tab" onclick="showTab('pep',this)">Análisis PEP</button>
+  <button class="nav-tab" onclick="showTab('riesgo',this)">Matriz de Riesgo</button>
+  <button class="nav-tab" onclick="showTab('conclusion',this)">Conclusión</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1 — LISTAS RESTRICTIVAS
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-listas" class="section active">
+  <div class="sec-header">
+    <div class="sec-icon">📋</div>
+    <div class="sec-title">Listas Restrictivas Internacionales</div>
+  </div>
+  <p class="sec-desc">Consulta del 28 de marzo de 2026 contra más de 40 listas internacionales de sanciones, terrorismo y corrupción. Los resultados se presentan con su nivel de impacto para el análisis LAFT.</p>
+  <div class="divider"></div>
+
+  <div class="alert alert-red">
+    <div class="alert-icon">⚠</div>
+    <div>
+      <div class="alert-title">3 registros en listas de alto impacto del Departamento del Tesoro de los EE.UU.</div>
+      <div class="alert-text">El sujeto está incluido en la lista SDN de la OFAC, la Lista Clinton y el SAM. La última actualización data del 13 de marzo de 2026, lo que confirma que las sanciones se mantienen vigentes aún después del fallecimiento del titular.</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Lista / Fuente</th><th>Resultado</th><th>Nivel</th><th>Actualización</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-red">
+        <td><strong>OFAC — Lista SDN</strong><br><span style="color:var(--text-soft);font-size:12px">Specially Designated Nationals</span></td>
+        <td>Registra. Programa SDNTK. Alias: INGLATERRA.</td>
+        <td><span class="badge badge-red">Alto</span></td>
+        <td>13/03/2026</td>
+      </tr>
+      <tr class="row-red">
+        <td><strong>OFAC — Lista Clinton</strong><br><span style="color:var(--text-soft);font-size:12px">Búsqueda por nombre</span></td>
+        <td>Registra. CC 15441176, nacido Carepa, Antioquia.</td>
+        <td><span class="badge badge-red">Alto</span></td>
+        <td>13/03/2026</td>
+      </tr>
+      <tr class="row-red">
+        <td><strong>SAM — System for Award Management</strong><br><span style="color:var(--text-soft);font-size:12px">Dpto. del Tesoro, EE.UU.</span></td>
+        <td>Registra. Sanción bajo Foreign Narcotics Kingpin Regulations (31 CFR 598). Ingreso: 25/07/2014.</td>
+        <td><span class="badge badge-red">Alto</span></td>
+        <td>26/02/2026</td>
+      </tr>
+      <tr>
+        <td><strong>ONU — Consejo de Seguridad</strong></td>
+        <td>No registra.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>27/03/2026</td>
+      </tr>
+      <tr>
+        <td><strong>INTERPOL — Circular Roja</strong></td>
+        <td>No registra.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>28/03/2026</td>
+      </tr>
+      <tr>
+        <td><strong>EUROPOL — Most Wanted List</strong></td>
+        <td>No registra.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>28/03/2026</td>
+      </tr>
+      <tr>
+        <td><strong>Unión Europea — Consolidated Sanctions</strong></td>
+        <td>No registra en ninguna de las listas europeas.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>28/03/2026</td>
+      </tr>
+      <tr>
+        <td><strong>Banco Mundial / BID — Inelegibles</strong></td>
+        <td>No registra en listas multilaterales.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>28/03/2026</td>
+      </tr>
+      <tr>
+        <td><strong>Panama / Pandora / Paradise / Offshore Papers</strong><br><span style="color:var(--text-soft);font-size:12px">Base de datos ICIJ</span></td>
+        <td>No registra en ninguna base de filtraciones financieras.</td>
+        <td><span class="badge badge-green">Limpio</span></td>
+        <td>28/03/2026</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Hallazgos por categoría de lista</div>
+    <div class="bar-chart">
+      <div class="bar-col">
+        <div class="bar-value">3</div>
+        <div class="bar" style="height:100%;background:var(--navy-600)"></div>
+        <div class="bar-label">OFAC / SAM</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-value">1</div>
+        <div class="bar" style="height:33%;background:var(--navy-400)"></div>
+        <div class="bar-label">Policía Nacional</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-value">1</div>
+        <div class="bar" style="height:33%;background:var(--navy-400)"></div>
+        <div class="bar-label">Registraduría</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-value">0</div>
+        <div class="bar" style="height:3%;background:var(--line)"></div>
+        <div class="bar-label">ONU / Interpol</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-value">0</div>
+        <div class="bar" style="height:3%;background:var(--line)"></div>
+        <div class="bar-label">UE / Europol</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-value">0</div>
+        <div class="bar" style="height:3%;background:var(--line)"></div>
+        <div class="bar-label">BM / BID</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 2 — ANTECEDENTES
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-antecedentes" class="section">
+  <div class="sec-header">
+    <div class="sec-icon">🇨🇴</div>
+    <div class="sec-title">Antecedentes en Fuentes Nacionales</div>
+  </div>
+  <p class="sec-desc">Verificación en las principales fuentes de control colombianas para determinar antecedentes judiciales, disciplinarios, fiscales y tributarios del sujeto consultado.</p>
+  <div class="divider"></div>
+
+  <div class="alert alert-red">
+    <div class="alert-icon">⚠</div>
+    <div>
+      <div class="alert-title">Documento cancelado por muerte — Registraduría Nacional</div>
+      <div class="alert-text">El documento de identidad 15.441.176 aparece con estado "Cancelada por Muerte". Cualquier uso de este documento en transacciones actuales constituye una señal directa de fraude o suplantación de identidad.</div>
+    </div>
+  </div>
+  <div class="alert alert-amber">
+    <div class="alert-icon">!</div>
+    <div>
+      <div class="alert-title">Posibles antecedentes judiciales — Policía Nacional</div>
+      <div class="alert-text">El sistema de la Policía Nacional registra "posibles antecedentes judiciales". El certificado formal no pudo ser generado por el estado del documento (cancelado por muerte), lo cual es consistente pero mantiene la alerta activa.</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Fuente nacional</th><th>Resultado</th><th>Nivel</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-red"><td><strong>Registraduría Nacional del Estado Civil</strong></td><td>Cancelada por Muerte</td><td><span class="badge badge-red">Alto</span></td></tr>
+      <tr class="row-red"><td><strong>Policía Nacional — Antecedentes Judiciales</strong></td><td>Posibles antecedentes. Certificado no generado (documento cancelado por muerte).</td><td><span class="badge badge-red">Alto</span></td></tr>
+      <tr><td><strong>Procuraduría General de la Nación</strong></td><td>No registra sanciones disciplinarias vigentes.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+      <tr><td><strong>Contraloría General de la República</strong></td><td>No registra responsabilidad fiscal.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+      <tr><td><strong>Contaduría — Boletín Deudores Morosos (BDME)</strong></td><td>No incluido en el BDME.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+      <tr><td><strong>INPEC — Sistema Carcelario</strong></td><td>No registra situación carcelaria activa.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+      <tr><td><strong>DIAN — Registro Único Tributario (RUT)</strong></td><td>No se encuentra registrado en el RUT.</td><td><span class="badge badge-gray">N/A</span></td></tr>
+      <tr><td><strong>SECOP — Contratación Pública</strong></td><td>No registra como contratista ni proveedor del Estado.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+      <tr class="row-amber"><td><strong>JEPMS — 14 sedes consultadas</strong></td><td>Sin registros en las 5 sedes disponibles. 9 sedes con indisponibilidad técnica.</td><td><span class="badge badge-amber">Parcial</span></td></tr>
+      <tr><td><strong>Portal Anticorrupción — PACO</strong></td><td>No registra.</td><td><span class="badge badge-green">Limpio</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 3 — PERFIL CRIMINAL
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-perfil" class="section">
+  <div class="sec-header">
+    <div class="sec-icon">📁</div>
+    <div class="sec-title">Perfil Criminal y Reputacional</div>
+  </div>
+  <p class="sec-desc">Análisis del historial criminal documentado públicamente, vínculos organizacionales y trayectoria de la estructura criminal que persiste bajo su nombre.</p>
+  <div class="divider"></div>
+
+  <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));margin-bottom:32px">
+    <div class="card" style="border-color:rgba(139,26,26,0.25);background:var(--red-bg)">
+      <div class="card-title" style="margin-bottom:6px;color:var(--red-mid)">Organización</div>
+      <div class="card-value" style="font-size:16px;font-weight:700;color:var(--red-dark)">Clan del Golfo</div>
+      <div style="font-size:11.5px;color:var(--text-soft);margin-top:4px">Autodefensas Gaitanistas de Colombia (AGC)</div>
+    </div>
+    <div class="card" style="border-color:rgba(139,26,26,0.25);background:var(--red-bg)">
+      <div class="card-title" style="margin-bottom:6px;color:var(--red-mid)">Jerarquía</div>
+      <div class="card-value" style="font-size:16px;font-weight:700;color:var(--red-dark)">Segundo al mando</div>
+      <div style="font-size:11.5px;color:var(--text-soft);margin-top:4px">GAO de mayor alcance en Colombia</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:6px">Actividades ilícitas</div>
+      <div class="card-value">Narcotráfico · Extorsión · Sicariato · Tráfico de armas</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:6px">Zonas de influencia</div>
+      <div class="card-value">Catatumbo · Magdalena · La Guajira · Norte de Santander</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:18px;color:var(--text)">Línea de tiempo criminal</h3>
+  <div class="timeline">
+    <div class="tl-item normal">
+      <div class="tl-year">1979</div>
+      <div class="tl-text">Nacimiento en Carepa, Antioquia, Colombia.</div>
+    </div>
+    <div class="tl-item warning">
+      <div class="tl-year">~2000s</div>
+      <div class="tl-text">Vinculación a las Autodefensas Unidas de Colombia (AUC).</div>
+    </div>
+    <div class="tl-item warning">
+      <div class="tl-year">~2010s</div>
+      <div class="tl-text">Reincorporación al Clan del Golfo como segundo al mando, tras el proceso de desmovilización de las AUC.</div>
+    </div>
+    <div class="tl-item critical">
+      <div class="tl-year">25 de julio de 2014</div>
+      <div class="tl-text">Inclusión en las listas OFAC-SDN y SAM del Departamento del Tesoro de los EE.UU., bajo el programa SDNTK (narcotráfico transnacional).</div>
+    </div>
+    <div class="tl-item critical">
+      <div class="tl-year">Junio de 2016</div>
+      <div class="tl-text">Extinción de dominio sobre 286 bienes de su estructura, ubicados a nombre de familiares y testaferros en Antioquia y Córdoba.</div>
+    </div>
+    <div class="tl-item critical">
+      <div class="tl-year">23 de noviembre de 2017</div>
+      <div class="tl-text">Abatido durante la Operación Agamenón II en Chinácota, Norte de Santander. Informado directamente por el presidente Juan Manuel Santos.</div>
+    </div>
+    <div class="tl-item warning">
+      <div class="tl-year">2021 – 2024</div>
+      <div class="tl-text">La "Subestructura Luis Orlando Padierna Peña" del Clan del Golfo continúa activa. Capturas de cabecillas en Norte de Santander (marzo de 2024).</div>
+    </div>
+    <div class="tl-item warning">
+      <div class="tl-year">Abril de 2025</div>
+      <div class="tl-text">Decomiso de arsenal a la subestructura en Cúcuta: 27 fusiles y 4.000 cartuchos (fuente: El Tiempo, 24/04/2025).</div>
+    </div>
+    <div class="tl-item critical">
+      <div class="tl-year">13 de marzo de 2026</div>
+      <div class="tl-text">Última actualización de sanciones OFAC-SDN y Lista Clinton: sanciones vigentes a la fecha del presente informe.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 4 — PEP
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-pep" class="section">
+  <div class="sec-header">
+    <div class="sec-icon">🏛</div>
+    <div class="sec-title">Análisis de Persona Expuesta Políticamente (PEP)</div>
+  </div>
+  <p class="sec-desc">Verificación exhaustiva en más de 30 países y en todas las categorías PEP nacionales, para determinar si el sujeto tiene o tuvo vínculos con cargos de poder público.</p>
+  <div class="divider"></div>
+
+  <div class="alert alert-blue">
+    <div class="alert-icon">ℹ</div>
+    <div>
+      <div class="alert-title">No registra como PEP — Riesgo LAFT se mantiene en nivel Extremo</div>
+      <div class="alert-text">Aunque el sujeto no aparece en ninguna lista PEP nacional ni internacional, esto es consistente con su rol como actor del crimen organizado sin funciones gubernamentales formales. La ausencia de registro PEP no reduce el nivel de riesgo. Adicionalmente, la Procuraduría General inhabilitó en 2023 a un Mayor de la Policía Nacional por vínculos con el Clan del Golfo, lo que evidencia redes de corrupción institucional asociadas a esta estructura.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Cobertura de verificación PEP</div>
+    <div class="donut-wrap">
+      <canvas id="pepChart" width="160" height="160"></canvas>
+      <div class="donut-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--navy-600)"></div>PEP Colombia — Todas las categorías: No registra</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--navy-400)"></div>PEP Internacionales — más de 30 países: No registra</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--navy-300)"></div>Candidatos electorales 2019 / 2022 / 2023: No registra</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--navy-100)"></div>Magistrados y funcionarios judiciales: No registra</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--line)"></div>Embajadas y cargos diplomáticos: No registra</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Categoría PEP</th><th>Resultado</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-green"><td>PEP Colombia — Todas las categorías</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>PEP Internacionales — más de 30 países</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>Candidatos electorales (2019, 2022, 2023)</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>Magistrados y funcionarios judiciales</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>Funcionarios de alto nivel, Fuerzas Militares</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>Embajadas y cargos diplomáticos</td><td><span class="badge badge-green">No registra</span></td></tr>
+      <tr class="row-green"><td>Funcionarios públicos nivel municipal y gobernaciones</td><td><span class="badge badge-green">No registra</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 5 — MATRIZ DE RIESGO
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-riesgo" class="section">
+  <div class="sec-header">
+    <div class="sec-icon">📊</div>
+    <div class="sec-title">Matriz de Riesgo LAFT</div>
+  </div>
+  <p class="sec-desc">Valoración multidimensional de los factores de riesgo conforme a los elementos del sistema de gestión LAFT y los criterios de evaluación de contrapartes de las Superintendencias colombianas.</p>
+  <div class="divider"></div>
+
+  <div class="chart-wrap" style="margin-bottom:28px">
+    <div class="chart-title">Distribución de factores por nivel de riesgo</div>
+    <div class="donut-wrap">
+      <canvas id="riskDonut" width="160" height="160"></canvas>
+      <div class="donut-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--red-mid)"></div><strong>Extremo:</strong> 4 factores — listas restrictivas, identidad, crimen organizado, testaferrato</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--navy-400)"></div><strong>Alto / Muy alto:</strong> 2 factores — zona geográfica, antecedentes judiciales</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><strong>Bajo:</strong> 3 factores — Procuraduría, Contraloría, BDME</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Factor de riesgo</th><th>Hallazgo</th><th>Valoración</th></tr>
+    </thead>
+    <tbody>
+      <tr class="row-red">
+        <td><strong>Identidad y estado del documento</strong></td>
+        <td>Documento cancelado por muerte. El uso activo de esta cédula en cualquier transacción constituye un indicador directo de fraude o suplantación.</td>
+        <td><span class="badge badge-red">Extremo</span></td>
+      </tr>
+      <tr class="row-red">
+        <td><strong>Listas restrictivas internacionales</strong></td>
+        <td>Sancionado en OFAC-SDN, Lista Clinton y SAM desde 2014. Programa SDNTK. Sanciones vigentes a marzo de 2026.</td>
+        <td><span class="badge badge-red">Extremo</span></td>
+      </tr>
+      <tr class="row-red">
+        <td><strong>Vínculos con crimen organizado</strong></td>
+        <td>Segundo al mando del Clan del Golfo (GAO más grande de Colombia). Actividades documentadas: narcotráfico, extorsión y sicariato.</td>
+        <td><span class="badge badge-red">Extremo</span></td>
+      </tr>
+      <tr class="row-red">
+        <td><strong>Testaferrato y activos ilícitos</strong></td>
+        <td>Extinción de dominio sobre 286 bienes en 2016. Bajo la Ley 1708 de 2014 la acción es imprescriptible.</td>
+        <td><span class="badge badge-red">Extremo</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td><strong>Zona geográfica de influencia</strong></td>
+        <td>Catatumbo, Magdalena, La Guajira y Norte de Santander. Regiones de alta presencia de crimen organizado.</td>
+        <td><span class="badge badge-amber">Muy alto</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td><strong>Antecedentes judiciales</strong></td>
+        <td>La Policía Nacional registra posibles antecedentes. El certificado formal no pudo generarse por cancelación del documento.</td>
+        <td><span class="badge badge-amber">Alto</span></td>
+      </tr>
+      <tr class="row-green">
+        <td><strong>Antecedentes disciplinarios (Procuraduría)</strong></td>
+        <td>No registra sanciones disciplinarias directas al titular.</td>
+        <td><span class="badge badge-green">Bajo</span></td>
+      </tr>
+      <tr class="row-green">
+        <td><strong>Responsabilidad fiscal (Contraloría)</strong></td>
+        <td>No registra responsabilidad fiscal.</td>
+        <td><span class="badge badge-green">Bajo</span></td>
+      </tr>
+      <tr class="row-green">
+        <td><strong>Deudas con el Estado (BDME)</strong></td>
+        <td>No incluido en el Boletín de Deudores Morosos del Estado.</td>
+        <td><span class="badge badge-green">Bajo</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-amber">
+    <div class="alert-icon">!</div>
+    <div>
+      <div class="alert-title">Fuentes con indisponibilidad técnica</div>
+      <div class="alert-text">Las siguientes fuentes presentaron indisponibilidad al momento de la consulta: Vigencia y expedición del documento, Rama Judicial Unificada, JEPMS de Montería, Santa Marta, Pasto, Armenia, Bogotá, Cartagena, Medellín y Neiva. Se recomienda reintentar estas consultas en un plazo de 48 horas y dejar constancia en el expediente de cumplimiento.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 6 — CONCLUSIÓN
+═══════════════════════════════════════════════════════════ -->
+<div id="tab-conclusion" class="section">
+  <div class="sec-header">
+    <div class="sec-icon">⚖</div>
+    <div class="sec-title">Conclusión y Recomendación</div>
+  </div>
+  <p class="sec-desc">Determinación final del perfil de riesgo LAFT y acciones obligatorias para el Oficial de Cumplimiento.</p>
+  <div class="divider"></div>
+
+  <div class="conclusion-box">
+    <h2>Rechazo total de la relación comercial</h2>
+    <p>El análisis integral arroja un perfil de riesgo LAFT <strong>extremo e irredimible</strong>. No existe ningún escenario en el que una relación comercial con esta identidad sea legalmente viable o éticamente justificable bajo el marco normativo colombiano y los estándares internacionales LAFT.</p>
+  </div>
+
+  <div class="alert alert-red" style="margin-bottom:28px">
+    <div class="alert-icon">⚠</div>
+    <div>
+      <div class="alert-title">Razones determinantes para el rechazo</div>
+      <div class="alert-text">
+        <strong>1.</strong> El titular está fallecido. El uso de esta cédula en cualquier operación constituye fraude o suplantación de identidad.<br><br>
+        <strong>2.</strong> Figura como sancionado activo en tres listas del Departamento del Tesoro de los EE.UU. (OFAC-SDN, Lista Clinton y SAM), bajo el programa de narcotráfico transnacional (SDNTK). Actualización vigente: marzo de 2026.<br><br>
+        <strong>3.</strong> Fue el segundo cabecilla del Clan del Golfo, el grupo armado organizado de mayor capacidad criminal en Colombia, responsable de narcotráfico, extorsión y sicariato a escala nacional.<br><br>
+        <strong>4.</strong> Sus activos patrimoniales son objeto de extinción de dominio. La acción es imprescriptible (Ley 1708 de 2014). Persisten procesos activos contra su subestructura.<br><br>
+        <strong>5.</strong> Cualquier relación comercial bajo esta identidad constituiría una infracción directa a los regímenes LAFT establecidos en la Ley 2195 de 2021, el CONPES 4042 de 2021 y los lineamientos de las Superintendencias colombianas.
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:16px;color:var(--text)">Acciones obligatorias para el Oficial de Cumplimiento</h3>
+  <div class="actions-list">
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-content">
+        <div class="action-title">Elaborar y radicar Reporte de Operación Sospechosa (ROS) ante la UIAF</div>
+        <div class="action-detail">Conforme al artículo 6 de la Ley 2195 de 2021 y los lineamientos de la Unidad de Información y Análisis Financiero.</div>
+      </div>
+      <div class="action-tag">Inmediato</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-content">
+        <div class="action-title">Rechazar y documentar formalmente la negativa de vinculación</div>
+        <div class="action-detail">Dejar constancia escrita del rechazo y sus razones, archivándola en el expediente de cumplimiento.</div>
+      </div>
+      <div class="action-tag">Inmediato</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">3</div>
+      <div class="action-content">
+        <div class="action-title">Reintentar consultas de fuentes no disponibles</div>
+        <div class="action-detail">9 sedes JEPMS, Rama Judicial Unificada y vigencia del documento. Agregar los resultados al expediente.</div>
+      </div>
+      <div class="action-tag blue">48 horas</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">4</div>
+      <div class="action-content">
+        <div class="action-title">Notificar a autoridades si existe una contraparte que invocó esta identidad</div>
+        <div class="action-detail">Si una persona presentó esta cédula, contactar a la Fiscalía General de la Nación (línea 122).</div>
+      </div>
+      <div class="action-tag">Inmediato</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">5</div>
+      <div class="action-content">
+        <div class="action-title">Conservar este informe en el expediente de cumplimiento</div>
+        <div class="action-detail">Mínimo 10 años, conforme a los lineamientos SARLAFT / SAGRILAFT de las Superintendencias colombianas.</div>
+      </div>
+      <div class="action-tag blue">Permanente</div>
+    </div>
+  </div>
+
+  <div class="meta-block">
+    <div>
+      <div class="meta-label">Herramienta utilizada</div>
+      <div class="meta-value">Tusdatos.co — Plan Cumplimiento 360 | Gentech S.A.S.</div>
+    </div>
+    <div>
+      <div class="meta-label">Marco normativo</div>
+      <div class="meta-value">Ley 2195/2021 · CONPES 4042/2021 · Ley 1708/2014</div>
+    </div>
+    <div>
+      <div class="meta-label">Fecha de consulta</div>
+      <div class="meta-value">28 de marzo de 2026 — 11:53 AM</div>
+    </div>
+    <div>
+      <div class="meta-label">Clasificación</div>
+      <div class="meta-value danger">Confidencial — Uso exclusivo Oficial de Cumplimiento</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<div class="footer">
+  INFORME DE DEBIDA DILIGENCIA INTENSIFICADA — LAFT<br>
+  CC 15.441.176 · Luis Orlando Padierna Peña · 28 / 03 / 2026<br>
+  Confidencial · Uso exclusivo del Oficial de Cumplimiento · Ley 2195/2021 · CONPES 4042/2021
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'pep')   initPep();
+  if (id === 'riesgo') initRisk();
+}
+
+/* ─ Gauge ─────────────────────────────────────────────── */
+(function drawGauge() {
+  const c = document.getElementById('gaugeCanvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const cx = 95, cy = 105, r = 80;
+  const segs = [
+    { s: Math.PI,       e: Math.PI*1.2, col: '#1B5E20' },
+    { s: Math.PI*1.2,   e: Math.PI*1.4, col: '#0D47A1' },
+    { s: Math.PI*1.4,   e: Math.PI*1.6, col: '#1565C0' },
+    { s: Math.PI*1.6,   e: Math.PI*1.8, col: '#6A1A1A' },
+    { s: Math.PI*1.8,   e: Math.PI*2,   col: '#8B1A1A' },
+  ];
+  segs.forEach(s => {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, s.s, s.e);
+    ctx.closePath();
+    ctx.fillStyle = s.col;
+    ctx.fill();
+    ctx.strokeStyle = '#F0F4F8';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+  ctx.beginPath();
+  ctx.arc(cx, cy, 45, 0, Math.PI*2);
+  ctx.fillStyle = '#EBF3FA';
+  ctx.fill();
+  ctx.strokeStyle = '#C5CDD6';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  // Needle — extreme
+  const na = Math.PI * 1.93;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + 68 * Math.cos(na), cy + 68 * Math.sin(na));
+  ctx.strokeStyle = '#0A1628';
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(cx, cy, 6, 0, Math.PI*2);
+  ctx.fillStyle = '#0A1628';
+  ctx.fill();
+  ctx.fillStyle = '#8B1A1A';
+  ctx.font = 'bold 12px Playfair Display, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('EXTREMO', cx, cy + 20);
+  ctx.fillStyle = '#6B7C93';
+  ctx.font = '9px Source Sans 3, sans-serif';
+  ctx.fillText('Riesgo LAFT', cx, cy + 33);
+})();
+
+/* ─ PEP donut ─────────────────────────────────────────── */
+function initPep() {
+  const c = document.getElementById('pepChart');
+  if (!c || c.dataset.done) return;
+  c.dataset.done = '1';
+  const ctx = c.getContext('2d');
+  const cx = 80, cy = 80, r = 68, ir = 38;
+  const cols = ['#0A1628','#1D3F6F','#2E6DA4','#5B9BD5','#C5CDD6'];
+  let a = -Math.PI/2;
+  cols.forEach(col => {
+    const sw = (1/cols.length)*Math.PI*2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, a, a+sw);
+    ctx.closePath();
+    ctx.fillStyle = col;
+    ctx.fill();
+    ctx.strokeStyle = '#F0F4F8';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    a += sw;
+  });
+  ctx.beginPath();
+  ctx.arc(cx, cy, ir, 0, Math.PI*2);
+  ctx.fillStyle = '#EBF3FA';
+  ctx.fill();
+  ctx.fillStyle = '#1B5E20';
+  ctx.font = 'bold 13px Source Sans 3, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Limpio', cx, cy + 5);
+}
+
+/* ─ Risk donut ────────────────────────────────────────── */
+function initRisk() {
+  const c = document.getElementById('riskDonut');
+  if (!c || c.dataset.done) return;
+  c.dataset.done = '1';
+  const ctx = c.getContext('2d');
+  const cx = 80, cy = 80, r = 68, ir = 38;
+  const data = [{v:4,col:'#8B1A1A'},{v:2,col:'#2E6DA4'},{v:3,col:'#1B5E20'}];
+  const total = data.reduce((s,d)=>s+d.v,0);
+  let a = -Math.PI/2;
+  data.forEach(d => {
+    const sw = (d.v/total)*Math.PI*2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, a, a+sw);
+    ctx.closePath();
+    ctx.fillStyle = d.col;
+    ctx.fill();
+    ctx.strokeStyle = '#F0F4F8';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    a += sw;
+  });
+  ctx.beginPath();
+  ctx.arc(cx, cy, ir, 0, Math.PI*2);
+  ctx.fillStyle = '#EBF3FA';
+  ctx.fill();
+  ctx.fillStyle = '#0A1628';
+  ctx.font = 'bold 15px Source Sans 3, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('9', cx, cy - 4);
+  ctx.fillStyle = '#6B7C93';
+  ctx.font = '9px Source Sans 3, sans-serif';
+  ctx.fillText('factores', cx, cy + 10);
+}
+</script>
+</body>
+</html>
