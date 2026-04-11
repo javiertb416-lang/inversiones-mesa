@@ -3,463 +3,365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inversiones Mesa Mesa – Talleres 2 & 3</title>
+<title>Inversiones Mesa Mesa – Talleres 2 &amp; 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --gold: #B8860B;
-    --gold-light: #D4A017;
-    --gold-pale: #F5EDD0;
-    --dark: #0E0E0E;
-    --dark-2: #1A1A1A;
-    --dark-3: #252525;
-    --dark-4: #303030;
-    --text-primary: #F0EAD6;
-    --text-secondary: #A89880;
-    --text-muted: #6B6055;
-    --accent-int: #4A8C6F;
-    --accent-int-light: #D6EEE3;
-    --accent-ext: #8C4A4A;
-    --accent-ext-light: #EED6D6;
-    --border: rgba(184,134,11,0.2);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
+:root {
+  --bg:         #0B1A3E;
+  --bg2:        #0F2150;
+  --bg3:        #142868;
+  --bg4:        #1A3282;
+  --gold:       #E8B84B;
+  --gold-lt:    #F5D070;
+  --white:      #FFFFFF;
+  --text:       #FFFFFF;
+  --text-b:     #D0DCFA;
+  --text-c:     #90A8D8;
+  --border:     rgba(255,255,255,0.14);
+  --border-g:   rgba(232,184,75,0.4);
+  --green:      #3CB87A;
+  --green-dk:   #1F6E44;
+  --green-dk2:  #176038;
+  --red:        #E06060;
+  --blue-btn:   #1A4A8C;
+  --teal:       #2AA8BF;
+  --serif:      'Playfair Display', Georgia, serif;
+  --sans:       'DM Sans', sans-serif;
+}
 
-  body {
-    font-family: var(--sans);
-    background: var(--dark);
-    color: var(--text-primary);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+html { scroll-behavior: smooth; }
 
-  .presentation {
-    width: 100%;
-    max-width: 900px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .slide {
-    display: none;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 3rem 3.5rem 2rem;
-    animation: fadeIn 0.5s ease;
-  }
-  .slide.active { display: flex; }
+.presentation { width: 100%; max-width: 960px; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+.slide {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 3rem 3.5rem 5rem;
+  animation: fadeIn 0.4s ease;
+}
+.slide.active { display: flex; }
 
-  /* ── SLIDE 1: COVER ── */
-  .cover {
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    border-left: 2px solid var(--gold);
-    padding-left: 3rem;
-    margin-left: 1rem;
-  }
-  .cover-eyebrow {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 1.5rem;
-  }
-  .cover-title {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-  }
-  .cover-title span { color: var(--gold-light); }
-  .cover-subtitle {
-    font-size: 13px;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
-    margin-bottom: 3rem;
-  }
-  .cover-meta {
-    display: flex;
-    gap: 2.5rem;
-  }
-  .cover-meta-item label {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .cover-meta-item span {
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-  .cover-year {
-    position: absolute;
-    right: 0;
-    bottom: 3rem;
-    font-family: var(--serif);
-    font-size: 8rem;
-    font-weight: 700;
-    color: rgba(184,134,11,0.06);
-    line-height: 1;
-    user-select: none;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-  /* ── SLIDE HEADER ── */
-  .slide-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .slide-number {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 0.5rem;
-  }
-  .slide-title {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
+/* ── PORTADA ── */
+.cover {
+  border-left: 3px solid var(--gold);
+  padding-left: 2.5rem;
+  margin-left: 0.5rem;
+}
+.cover-eyebrow {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 1.5rem;
+}
+.cover-title {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 0.5rem;
+}
+.cover-title span { color: var(--gold-lt); }
+.cover-subtitle { font-size: 13px; color: var(--text-b); letter-spacing: 1px; margin-bottom: 2.5rem; }
+.cover-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.cover-meta-item label {
+  display: block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-c); margin-bottom: 4px;
+}
+.cover-meta-item span { font-size: 14px; color: var(--text-b); }
+.cover-year {
+  position: absolute; right: 0; bottom: 3rem;
+  font-family: var(--serif); font-size: 8rem; font-weight: 700;
+  color: rgba(255,255,255,0.04); line-height: 1; user-select: none;
+}
 
-  /* ── SLIDE 2: ORGANIZACIÓN ── */
-  .org-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    flex: 1;
-  }
-  .org-card {
-    background: var(--dark-3);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.5rem;
-  }
-  .org-card.full { grid-column: 1 / -1; }
-  .org-card-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 0.75rem;
-  }
-  .org-card-text {
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: var(--text-secondary);
-  }
-  .org-card-text strong { color: var(--text-primary); font-weight: 500; }
-  .org-pill {
-    display: inline-block;
-    background: rgba(184,134,11,0.12);
-    border: 1px solid rgba(184,134,11,0.25);
-    color: var(--gold-light);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    margin: 3px 3px 3px 0;
-  }
+/* ── SLIDE HEADER ── */
+.slide-header {
+  margin-bottom: 2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border-g);
+}
+.slide-number { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.4rem; }
+.slide-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; color: var(--white); }
 
-  /* ── SLIDES 3 & 4: STAKEHOLDERS ── */
-  .stk-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    flex: 1;
-  }
-  .stk-card {
-    border-radius: 4px;
-    padding: 1.25rem;
-    border-left: 3px solid;
-    background: var(--dark-3);
-  }
-  .stk-card.interno { border-color: var(--accent-int); }
-  .stk-card.externo { border-color: var(--accent-ext); }
-  .stk-card-num {
-    font-family: var(--serif);
-    font-size: 1.6rem;
-    font-weight: 700;
-    opacity: 0.18;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-  .stk-card.interno .stk-card-num { color: var(--accent-int); }
-  .stk-card.externo .stk-card-num { color: var(--accent-ext); }
-  .stk-card-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
-  }
-  .stk-card-desc {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    line-height: 1.55;
-    margin-bottom: 0.75rem;
-  }
-  .stk-exp-toggle {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--gold-light);
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: var(--sans);
-  }
-  .stk-exp-toggle:hover { opacity: 0.7; }
-  .stk-exp-body {
-    display: none;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
-  }
-  .stk-exp-body.open { display: block; }
-  .stk-exp-section { margin-bottom: 0.6rem; }
-  .stk-exp-label {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .stk-card.interno .stk-exp-label { color: var(--accent-int); }
-  .stk-card.externo .stk-exp-label { color: var(--accent-ext); }
-  .stk-exp-text {
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.55;
-  }
+/* ── ORG SLIDE ── */
+.org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; flex: 1; }
+.org-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 1.4rem; }
+.org-card.full { grid-column: 1 / -1; }
+.org-card-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.65rem; }
+.org-card-text { font-size: 13px; line-height: 1.75; color: var(--text-b); }
+.org-card-text strong { color: var(--white); font-weight: 500; }
+.org-pill {
+  display: inline-block; background: rgba(232,184,75,0.15);
+  border: 1px solid rgba(232,184,75,0.3); color: var(--gold-lt);
+  font-size: 11px; padding: 3px 10px; border-radius: 3px; margin: 3px 3px 3px 0;
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
 
-  /* ── SLIDE 5: MAPA ── */
-  .map-wrap {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .map-center {
-    width: 110px;
-    height: 110px;
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--dark-2);
-    position: relative;
-    z-index: 2;
-  }
-  .map-center span:first-child {
-    font-family: var(--serif);
-    font-size: 11px;
-    color: var(--gold-light);
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  .map-center span:last-child {
-    font-size: 9px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-  .map-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px dashed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-  }
-  .map-ring.inner {
-    width: 300px; height: 300px;
-    border-color: rgba(74,140,111,0.3);
-  }
-  .map-ring.outer {
-    width: 500px; height: 500px;
-    border-color: rgba(140,74,74,0.3);
-  }
-  .map-node {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    cursor: default;
-  }
-  .map-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
-  .map-dot.int { background: var(--accent-int); }
-  .map-dot.ext { background: var(--accent-ext); }
-  .map-label {
-    font-size: 10px;
-    text-align: center;
-    line-height: 1.3;
-    max-width: 80px;
-    white-space: nowrap;
-  }
-  .map-label.int { color: #6EC49A; }
-  .map-label.ext { color: #C46E6E; }
+/* ── STAKEHOLDER CARDS ── */
+.stk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; flex: 1; }
+.stk-card {
+  border-radius: 6px; padding: 1.2rem;
+  border-left: 4px solid;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stk-card.interno { border-left-color: var(--green); }
+.stk-card.externo { border-left-color: var(--red); }
+.stk-card-num { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; opacity: 0.15; line-height: 1; margin-bottom: 0.2rem; color: var(--white); }
+.stk-card-name { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 0.35rem; line-height: 1.3; }
+.stk-card-desc { font-size: 11px; color: var(--text-b); line-height: 1.6; margin-bottom: 0.7rem; }
+.stk-exp-toggle {
+  font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; color: var(--gold-lt); background: none; border: none;
+  padding: 0; font-family: var(--sans);
+}
+.stk-exp-toggle:hover { opacity: 0.75; }
+.stk-exp-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px solid var(--border); }
+.stk-exp-body.open { display: block; }
+.stk-exp-section { margin-bottom: 0.55rem; }
+.stk-exp-label { font-size: 8.5px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.stk-card.interno .stk-exp-label { color: var(--green); }
+.stk-card.externo .stk-exp-label { color: var(--red); }
+.stk-exp-text { font-size: 10.5px; color: var(--text-b); line-height: 1.6; }
 
-  /* ── SLIDE 6: TALLER 3 ── */
-  .ae-context {
-    background: var(--dark-3);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold-light);
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.2rem;
-    font-size: 11px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  .ae-context strong { color: var(--text-primary); }
-  .ae-diagram {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 140px 1fr;
-    gap: 0.75rem;
-    align-items: center;
-    min-height: 0;
-  }
-  .ae-col { display: flex; flex-direction: column; gap: 0.75rem; }
-  .ae-center-wrap {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.6rem;
-  }
-  .ae-center-node {
-    width: 118px; height: 118px; border-radius: 50%;
-    border: 2px solid var(--gold); background: var(--dark-2);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    box-shadow: 0 0 0 8px rgba(184,134,11,0.07);
-  }
-  .ae-center-node span:first-child {
-    font-family: var(--serif); font-size: 10.5px; font-weight: 700;
-    color: var(--gold-light); line-height: 1.3;
-  }
-  .ae-center-node span:last-child { font-size: 7.5px; color: var(--text-muted); margin-top: 3px; }
-  .ae-triada {
-    font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--text-muted); text-align: center; line-height: 1.8;
-  }
-  .ae-triada span { color: var(--gold-light); }
-  .ae-card {
-    background: var(--dark-3); border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 4px; padding: 0.75rem 0.85rem;
-    position: relative; overflow: hidden;
-  }
-  .ae-card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-  }
-  .ae-card.int::before  { background: #4A8C6F; }
-  .ae-card.ext::before  { background: #8C4A4A; }
-  .ae-card.gold::before { background: var(--gold-light); }
-  .ae-card.blue::before { background: #3A5FAA; }
-  .ae-card-badge {
-    display: inline-block; font-size: 7px; letter-spacing: 2px;
-    text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
-    margin-bottom: 0.35rem; font-weight: 700;
-  }
-  .ae-card.int .ae-card-badge  { background: rgba(74,140,111,0.15); color: #6EC49A; }
-  .ae-card.ext .ae-card-badge  { background: rgba(140,74,74,0.15);  color: #C46E6E; }
-  .ae-card.gold .ae-card-badge { background: rgba(184,134,11,0.15); color: var(--gold-light); }
-  .ae-card.blue .ae-card-badge { background: rgba(58,95,170,0.15);  color: #7BA8E8; }
-  .ae-card-num {
-    position: absolute; top: 0.4rem; right: 0.6rem;
-    font-family: var(--serif); font-size: 1.3rem; font-weight: 700;
-    opacity: 0.1; color: var(--text-primary); line-height: 1;
-  }
-  .ae-card-title {
-    font-family: var(--serif); font-size: 12.5px; font-weight: 700;
-    color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.25;
-  }
-  .ae-card-who { font-size: 10px; font-weight: 500; margin-bottom: 0.3rem; }
-  .ae-card.int .ae-card-who  { color: #6EC49A; }
-  .ae-card.ext .ae-card-who  { color: #C46E6E; }
-  .ae-card.gold .ae-card-who { color: var(--gold-light); }
-  .ae-card.blue .ae-card-who { color: #7BA8E8; }
-  .ae-card-desc { font-size: 9px; color: var(--text-muted); line-height: 1.55; }
-  .ae-source {
-    text-align: center; font-size: 9px; color: var(--text-muted);
-    letter-spacing: 1px; padding-top: 0.6rem;
-    border-top: 1px solid rgba(184,134,11,0.1); margin-top: 0.5rem;
-  }
+/* ── MAPA ── */
+.map-wrap { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; min-height: 420px; }
+.map-center {
+  width: 115px; height: 115px; border: 2px solid var(--gold); border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; background: var(--bg3); position: relative; z-index: 2;
+}
+.map-center span:first-child { font-family: var(--serif); font-size: 11px; color: var(--gold-lt); font-weight: 700; line-height: 1.3; }
+.map-center span:last-child { font-size: 9px; color: var(--text-b); margin-top: 3px; }
+.map-ring { position: absolute; border-radius: 50%; border: 1px dashed; pointer-events: none; }
+.map-ring.inner { width: 300px; height: 300px; border-color: rgba(60,184,122,0.4); }
+.map-ring.outer { width: 500px; height: 500px; border-color: rgba(224,96,96,0.35); }
+.map-node { position: absolute; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.map-dot { width: 11px; height: 11px; border-radius: 50%; }
+.map-dot.int { background: var(--green); }
+.map-dot.ext { background: var(--red); }
+.map-label { font-size: 10px; text-align: center; line-height: 1.35; max-width: 85px; white-space: nowrap; color: var(--text-b); }
+.map-label.int { color: #7DE0A8; }
+.map-label.ext { color: #F0A0A0; }
 
-  /* ── NAV ── */
-  .nav {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--dark-3);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    padding: 0.6rem 1.2rem;
-    z-index: 100;
-  }
-  .nav-btn {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 16px;
-    cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 50px;
-    transition: background 0.2s, color 0.2s;
-    font-family: var(--sans);
-  }
-  .nav-btn:hover { background: rgba(184,134,11,0.1); color: var(--gold-light); }
-  .nav-btn:disabled { opacity: 0.3; cursor: default; }
-  .nav-dots { display: flex; gap: 6px; align-items: center; }
-  .nav-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--text-muted);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    border: none;
-  }
-  .nav-dot.active { background: var(--gold-light); transform: scale(1.3); }
+/* ── TALLER 3 ── */
+.ae-bar {
+  background: var(--bg3);
+  border-left: 5px solid var(--gold);
+  border-radius: 6px;
+  padding: 1rem 1.3rem;
+  margin-bottom: 1.4rem;
+  font-size: 12.5px;
+  color: var(--white);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.ae-bar .hl { color: var(--gold-lt); font-weight: 600; }
 
-  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+.ae-hub {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 155px 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.ae-card {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.ae-card-head {
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.ae-card.c-green  .ae-card-head { background: #1B5E3A; }
+.ae-card.c-green2 .ae-card-head { background: #14502F; }
+.ae-card.c-gold   .ae-card-head { background: #7A5008; }
+.ae-card.c-blue   .ae-card-head { background: #163A70; }
+
+.ae-card-head-left { display: flex; flex-direction: column; gap: 2px; }
+.ae-card-type {
+  font-size: 7.5px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.65);
+}
+.ae-card-role {
+  font-family: var(--serif); font-size: 14px; font-weight: 700;
+  color: var(--white); line-height: 1.2;
+}
+.ae-card-num-big {
+  font-family: var(--serif); font-size: 2.2rem; font-weight: 700;
+  color: rgba(255,255,255,0.2); line-height: 1; flex-shrink: 0;
+}
+.ae-card-body {
+  padding: 0.8rem 1rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
+  flex: 1;
+  background: var(--bg2);
+}
+.ae-card-who { font-size: 11.5px; font-weight: 600; color: var(--gold-lt); }
+.ae-card-desc { font-size: 10.5px; color: var(--text-b); line-height: 1.65; }
+
+.ae-center-cell {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.2rem;
+}
+.ae-imm-circle {
+  width: 128px; height: 128px; border-radius: 50%;
+  border: 3px solid var(--gold);
+  background: var(--bg3);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  box-shadow: 0 0 0 10px rgba(232,184,75,0.08);
+}
+.ae-imm-name {
+  font-family: var(--serif); font-size: 11.5px; font-weight: 700;
+  color: var(--gold-lt); line-height: 1.4;
+}
+.ae-triada { text-align: center; }
+.ae-triada-label {
+  font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-c); margin-bottom: 0.3rem; display: block;
+}
+.ae-triada-item {
+  display: block; font-size: 9px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold-lt); line-height: 2.1;
+}
+
+.ae-footer {
+  margin-top: 1.2rem; padding-top: 0.65rem;
+  border-top: 1px solid var(--border-g);
+  text-align: center; font-size: 9.5px;
+  letter-spacing: 0.8px; color: var(--text-c);
+}
+
+/* ── TALLER 4 ── */
+.t4-bar {
+  background: var(--bg3);
+  border-left: 5px solid var(--gold);
+  border-radius: 6px;
+  padding: 0.85rem 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 12px;
+  color: var(--white);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.t4-bar .hl { color: var(--gold-lt); font-weight: 600; }
+
+.t4-weights {
+  display: flex; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap;
+}
+.t4-wchip {
+  padding: 0.3rem 0.75rem; border-radius: 4px;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.5px;
+}
+.t4-wchip.quant { background: #163A70; color: #A8C4F0; }
+.t4-wchip.qual  { background: #1B5E3A; color: #A0DDB8; }
+.t4-wchip.gold  { background: rgba(232,184,75,0.15); color: var(--gold-lt); border: 1px solid rgba(232,184,75,0.3); }
+
+.t4-table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+.t4-table th {
+  padding: 0.5rem 0.4rem; text-align: center;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.5px;
+  line-height: 1.3; border: 1px solid rgba(255,255,255,0.1);
+}
+.t4-table th.h-proj  { background: var(--bg4); color: var(--white); text-align: left; width: 22%; }
+.t4-table th.h-quant { background: #163A70; color: #A8C4F0; }
+.t4-table th.h-qual  { background: #1B5E3A; color: #A0DDB8; }
+.t4-table th.h-score { background: #7A5008; color: var(--gold-lt); }
+.t4-table th.h-rank  { background: #7A5008; color: var(--gold-lt); }
+.t4-table th.h-dec   { background: var(--bg4); color: var(--gold-lt); }
+
+.t4-table td {
+  padding: 0.5rem 0.4rem; text-align: center;
+  border: 1px solid rgba(255,255,255,0.07); color: var(--text-b);
+}
+.t4-table td.td-proj {
+  text-align: left; color: var(--white); font-weight: 600;
+  font-size: 9.5px; padding-left: 0.6rem;
+}
+.t4-table td.td-score {
+  font-weight: 700; font-size: 12px; color: var(--gold-lt);
+}
+.t4-table td.td-rank {
+  font-weight: 700; font-size: 12px; color: var(--gold-lt);
+}
+.t4-table tr:nth-child(odd)  td { background: var(--bg2); }
+.t4-table tr:nth-child(even) td { background: var(--bg3); }
+
+.dec-ejecutar { background: #1B5E3A !important; color: #FFFFFF !important; font-weight: 700 !important; border-radius: 3px; padding: 2px 6px; font-size: 8.5px; }
+.dec-aparcar  { background: #7A5008 !important; color: #FFFFFF !important; font-weight: 700 !important; border-radius: 3px; padding: 2px 6px; font-size: 8.5px; }
+.dec-cancelar { background: #7A1A1A !important; color: #FFFFFF !important; font-weight: 700 !important; border-radius: 3px; padding: 2px 6px; font-size: 8.5px; }
+
+.t4-legend {
+  display: flex; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;
+}
+.t4-leg-item {
+  display: flex; align-items: center; gap: 5px; font-size: 9px; color: var(--text-b);
+}
+.t4-leg-dot {
+  width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--bg3); border: 1px solid var(--border-g);
+  border-radius: 50px; padding: 0.6rem 1.2rem; z-index: 100;
+}
+.nav-btn {
+  background: none; border: none; color: var(--text-b);
+  font-size: 16px; cursor: pointer; padding: 4px 10px;
+  border-radius: 50px; font-family: var(--sans);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-btn:hover { background: rgba(232,184,75,0.12); color: var(--gold-lt); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+.nav-dots { display: flex; gap: 7px; align-items: center; }
+.nav-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--text-c); cursor: pointer; border: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-dot.active { background: var(--gold-lt); transform: scale(1.35); }
 </style>
 </head>
 <body>
 
 <div class="presentation">
 
-  <!-- SLIDE 1: COVER -->
+<!-- SLIDE 1: COVER -->
   <div class="slide active" id="s1">
     <div style="flex:1; display:flex; flex-direction:column; justify-content:center; position:relative;">
       <div class="cover">
@@ -752,74 +654,101 @@
     <div style="display:flex; gap:1.5rem; justify-content:center; padding-bottom:3rem;">
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-int)"></div>
-        <span style="font-size:11px;color:var(--text-muted)">Stakeholders internos</span>
+        <span style="font-size:11px;color:#C0CEEE">Stakeholders internos</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-ext)"></div>
-        <span style="font-size:11px;color:var(--text-muted)">Stakeholders externos</span>
+        <span style="font-size:11px;color:#C0CEEE">Stakeholders externos</span>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 6: TALLER 3 — CAPACIDADES DE AE -->
+</div>
+
+  <!-- SLIDE 6: TALLER 3 -->
   <div class="slide" id="s6">
     <div class="slide-header">
       <p class="slide-number">05 · Taller 3 — Capacidades de Arquitectura Empresarial</p>
       <h2 class="slide-title">Equipo de Capacidades de AE</h2>
     </div>
 
-    <div class="ae-context">
-      <strong>Situación actual:</strong> Las decisiones de transformación las toma el Representante Legal directamente, sin filtro previo.
-      &nbsp;→&nbsp;
-      <strong>Propuesta:</strong> conformar un equipo multidisciplinario que evalúe el impacto en <strong>personas, procesos y tecnología</strong> antes de aprobar cualquier iniciativa.
+    <div class="ae-bar">
+      <strong>Situación actual:</strong> Transformaciones decididas directamente por el Representante Legal sin filtro previo.
+      &nbsp;<span class="hl">→</span>&nbsp;
+      <strong>Propuesta:</strong> Equipo multidisciplinario que evalúa impacto en
+      <span class="hl">personas · procesos · tecnología</span> antes de aprobar cualquier iniciativa.
     </div>
 
-    <div class="ae-diagram">
+    <div class="ae-hub">
 
-      <!-- LEFT COLUMN: internos -->
-      <div class="ae-col">
-        <div class="ae-card int">
-          <div class="ae-card-num">01</div>
-          <span class="ae-card-badge">Interno</span>
-          <p class="ae-card-title">Estrategia</p>
+      <!-- Tarjeta 01 — superior izquierda -->
+      <div class="ae-card c-green">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Interno</span>
+            <span class="ae-card-role">Estrategia</span>
+          </div>
+          <span class="ae-card-num-big">01</span>
+        </div>
+        <div class="ae-card-body">
           <p class="ae-card-who">Representante Legal</p>
           <p class="ae-card-desc">Define el rumbo estratégico y actúa como filtro principal ante cualquier proyecto de transformación organizacional.</p>
         </div>
-        <div class="ae-card int">
-          <div class="ae-card-num">02</div>
-          <span class="ae-card-badge">Interno</span>
-          <p class="ae-card-title">Procesos y Cambio</p>
+      </div>
+
+      <!-- Centro — IMM ocupa las 2 filas -->
+      <div class="ae-center-cell">
+        <div class="ae-imm-circle">
+          <span class="ae-imm-name">Inversiones<br>Mesa Mesa</span>
+        </div>
+        <div class="ae-triada-wrap">
+          <span class="ae-triada-label">Tríada</span>
+          <p>Personas</p>
+          <p>Procesos</p>
+          <p>Tecnología</p>
+        </div>
+      </div>
+
+      <!-- Tarjeta 03 — superior derecha -->
+      <div class="ae-card c-gold">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Externo</span>
+            <span class="ae-card-role">Riesgos y Cumplimiento</span>
+          </div>
+          <span class="ae-card-num-big">03</span>
+        </div>
+        <div class="ae-card-body">
+          <p class="ae-card-who">Oficial de Cumplimiento (rol ampliado)</p>
+          <p class="ae-card-desc">Evalúa riesgos financieros, regulatorios y de transformación. Gestiona SARLAFT y exposición fiscal ante la DIAN.</p>
+        </div>
+      </div>
+
+      <!-- Tarjeta 02 — inferior izquierda -->
+      <div class="ae-card c-green2">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Interno</span>
+            <span class="ae-card-role">Procesos y Cambio</span>
+          </div>
+          <span class="ae-card-num-big">02</span>
+        </div>
+        <div class="ae-card-body">
           <p class="ae-card-who">Gerente</p>
           <p class="ae-card-desc">Mapea flujos operativos y lidera la apropiación cultural. Gestiona el impacto en personas ante cualquier cambio.</p>
         </div>
       </div>
 
-      <!-- CENTER NODE -->
-      <div class="ae-center-wrap">
-        <div class="ae-center-node">
-          <span>Inversiones<br>Mesa Mesa</span>
-          <span>Nodo central</span>
+      <!-- Tarjeta 04 — inferior derecha -->
+      <div class="ae-card c-blue">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Externo</span>
+            <span class="ae-card-role">Tecnología</span>
+          </div>
+          <span class="ae-card-num-big">04</span>
         </div>
-        <p class="ae-triada">
-          <span>Personas</span>
-          <span>Procesos</span>
-          <span>Tecnología</span>
-        </p>
-      </div>
-
-      <!-- RIGHT COLUMN: externos -->
-      <div class="ae-col">
-        <div class="ae-card gold">
-          <div class="ae-card-num">03</div>
-          <span class="ae-card-badge">Externo</span>
-          <p class="ae-card-title">Riesgos y Cumplimiento</p>
-          <p class="ae-card-who">Oficial de Cumplimiento (rol ampliado)</p>
-          <p class="ae-card-desc">Evalúa riesgos financieros, regulatorios y de transformación. Gestiona SARLAFT y exposición fiscal (DIAN).</p>
-        </div>
-        <div class="ae-card blue">
-          <div class="ae-card-num">04</div>
-          <span class="ae-card-badge">Externo</span>
-          <p class="ae-card-title">Tecnología</p>
+        <div class="ae-card-body">
           <p class="ae-card-who">Consultor Externo</p>
           <p class="ae-card-desc">Evalúa impacto en plataformas financieras, sistemas contables y herramientas de inversión ante cada decisión.</p>
         </div>
@@ -827,8 +756,195 @@
 
     </div>
 
-    <p class="ae-source">Basado en caso EAFIT – Proyecto EPIC (2022) &nbsp;·&nbsp; Sistemas Integrados de Gestión – EAFIT</p>
+    <div class="ae-footer">
+      Basado en caso EAFIT – Proyecto EPIC (2022) &nbsp;·&nbsp; Sistemas Integrados de Gestión – Juan Carlos Massey Hurtado – EAFIT
+    </div>
   </div>
+
+</div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <p class="slide-number">05 · Taller 3 — Capacidades de Arquitectura Empresarial</p>
+      <h2 class="slide-title">Equipo de Capacidades de AE</h2>
+    </div>
+
+    <div class="ae-bar">
+      <strong>Situación actual:</strong> Transformaciones decididas directamente por el Representante Legal sin filtro previo.
+      &nbsp;<span class="hl">→</span>&nbsp;
+      <strong>Propuesta:</strong> Equipo multidisciplinario que evalúa impacto en
+      <span class="hl">personas · procesos · tecnología</span> antes de aprobar cualquier iniciativa. Basado en <strong>EAFIT – Proyecto EPIC (2022)</strong>.
+    </div>
+
+    <div class="ae-hub">
+
+      <div class="ae-card c-green">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Interno</span>
+            <span class="ae-card-role">Estrategia</span>
+          </div>
+          <span class="ae-card-num-big">01</span>
+        </div>
+        <div class="ae-card-body">
+          <p class="ae-card-who">Representante Legal</p>
+          <p class="ae-card-desc">Define el rumbo estratégico y actúa como filtro principal ante cualquier proyecto de transformación organizacional.</p>
+        </div>
+      </div>
+
+      <div class="ae-center-cell">
+        <div class="ae-imm-circle">
+          <span class="ae-imm-name">Inversiones<br>Mesa Mesa</span>
+        </div>
+        <div class="ae-triada">
+          <span class="ae-triada-label">Tríada</span>
+          <span class="ae-triada-item">Personas</span>
+          <span class="ae-triada-item">Procesos</span>
+          <span class="ae-triada-item">Tecnología</span>
+        </div>
+      </div>
+
+      <div class="ae-card c-gold">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Externo</span>
+            <span class="ae-card-role">Riesgos y Cumplimiento</span>
+          </div>
+          <span class="ae-card-num-big">03</span>
+        </div>
+        <div class="ae-card-body">
+          <p class="ae-card-who">Oficial de Cumplimiento (rol ampliado)</p>
+          <p class="ae-card-desc">Evalúa riesgos financieros, regulatorios y de transformación. Gestiona SARLAFT y exposición fiscal ante la DIAN.</p>
+        </div>
+      </div>
+
+      <div class="ae-card c-green2">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Interno</span>
+            <span class="ae-card-role">Procesos y Cambio</span>
+          </div>
+          <span class="ae-card-num-big">02</span>
+        </div>
+        <div class="ae-card-body">
+          <p class="ae-card-who">Gerente</p>
+          <p class="ae-card-desc">Mapea flujos operativos y lidera la apropiación cultural. Gestiona el impacto en personas ante cualquier cambio.</p>
+        </div>
+      </div>
+
+      <div class="ae-card c-blue">
+        <div class="ae-card-head">
+          <div class="ae-card-head-left">
+            <span class="ae-card-type">Externo</span>
+            <span class="ae-card-role">Tecnología</span>
+          </div>
+          <span class="ae-card-num-big">04</span>
+        </div>
+        <div class="ae-card-body">
+          <p class="ae-card-who">Consultor Externo</p>
+          <p class="ae-card-desc">Evalúa impacto en plataformas financieras, sistemas contables y herramientas de inversión ante cada decisión.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ae-footer">
+      Basado en caso EAFIT – Proyecto EPIC (2022) &nbsp;·&nbsp; Sistemas Integrados de Gestión – Juan Carlos Massey Hurtado – EAFIT
+    </div>
+  </div>
+
+  <!-- SLIDE 7: TALLER 4 -->
+  <div class="slide" id="s7">
+    <div class="slide-header">
+      <p class="slide-number">06 · Taller 4 — Priorización de Proyectos</p>
+      <h2 class="slide-title">Matriz de Priorización de Proyectos</h2>
+    </div>
+
+    <div class="t4-bar">
+      <strong>Propósito de valor:</strong> Preservar, proteger y multiplicar el patrimonio familiar con disciplina e inteligencia.
+      &nbsp;<span class="hl">Método:</span>&nbsp;
+      <span class="hl">40% cuantitativo</span> · <span class="hl">60% cualitativo</span> — dado que la finalidad principal de IMM es la protección patrimonial y no el retorno especulativo.
+    </div>
+
+    <div class="t4-weights">
+      <span class="t4-wchip quant">Cumplimiento regulatorio 15%</span>
+      <span class="t4-wchip quant">Retorno / Protección patrimonio 15%</span>
+      <span class="t4-wchip quant">Ahorro costos 10%</span>
+      <span class="t4-wchip qual">Alineación propósito familiar 25%</span>
+      <span class="t4-wchip qual">Perfil de riesgo aceptable 20%</span>
+      <span class="t4-wchip qual">Eficiencia operativa 15%</span>
+    </div>
+
+    <table class="t4-table">
+      <thead>
+        <tr>
+          <th class="h-proj">PROYECTO</th>
+          <th class="h-quant">Reg.<br>15%</th>
+          <th class="h-quant">Retorno<br>15%</th>
+          <th class="h-quant">Costos<br>10%</th>
+          <th class="h-qual">Propósito<br>Familiar 25%</th>
+          <th class="h-qual">Perfil<br>Riesgo 20%</th>
+          <th class="h-qual">Eficiencia<br>15%</th>
+          <th class="h-score">PUNTAJE</th>
+          <th class="h-rank">#</th>
+          <th class="h-dec">DECISIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-proj">Sistema de gestión tributaria y fiscal</td>
+          <td>5</td><td>4</td><td>4</td><td>4</td><td>5</td><td>4</td>
+          <td class="td-score">4.35</td>
+          <td class="td-rank">1°</td>
+          <td><span class="dec-ejecutar">EJECUTAR</span></td>
+        </tr>
+        <tr>
+          <td class="td-proj">Sistema de gestión de riesgos integral</td>
+          <td>4</td><td>4</td><td>3</td><td>5</td><td>5</td><td>4</td>
+          <td class="td-score">4.35</td>
+          <td class="td-rank">2°</td>
+          <td><span class="dec-ejecutar">EJECUTAR</span></td>
+        </tr>
+        <tr>
+          <td class="td-proj">Plan de recomposición del portafolio</td>
+          <td>2</td><td>5</td><td>3</td><td>5</td><td>4</td><td>3</td>
+          <td class="td-score">3.85</td>
+          <td class="td-rank">3°</td>
+          <td><span class="dec-aparcar">APARCAR</span></td>
+        </tr>
+        <tr>
+          <td class="td-proj">Protocolo de gobierno familiar</td>
+          <td>2</td><td>4</td><td>2</td><td>5</td><td>4</td><td>3</td>
+          <td class="td-score">3.60</td>
+          <td class="td-rank">4°</td>
+          <td><span class="dec-aparcar">APARCAR</span></td>
+        </tr>
+        <tr>
+          <td class="td-proj">Plataforma unificada de seguimiento del portafolio</td>
+          <td>2</td><td>4</td><td>3</td><td>4</td><td>3</td><td>5</td>
+          <td class="td-score">3.55</td>
+          <td class="td-rank">5°</td>
+          <td><span class="dec-aparcar">APARCAR</span></td>
+        </tr>
+        <tr>
+          <td class="td-proj">Digitalización de procesos operativos</td>
+          <td>3</td><td>2</td><td>5</td><td>3</td><td>3</td><td>5</td>
+          <td class="td-score">3.35</td>
+          <td class="td-rank">6°</td>
+          <td><span class="dec-cancelar">CANCELAR</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="t4-legend">
+      <div class="t4-leg-item"><div class="t4-leg-dot" style="background:#1B5E3A"></div> EJECUTAR ≥ 4.0</div>
+      <div class="t4-leg-item"><div class="t4-leg-dot" style="background:#7A5008"></div> APARCAR 3.5 – 3.9</div>
+      <div class="t4-leg-item"><div class="t4-leg-dot" style="background:#7A1A1A"></div> CANCELAR &lt; 3.5</div>
+      <div class="t4-leg-item" style="color:var(--text-c)">Escala 1–5: 1=sin impacto · 3=medio · 5=crítico</div>
+    </div>
+  </div>
+
 
 </div>
 
@@ -840,9 +956,8 @@
 </nav>
 
 <script>
-  const total = 6;
+  const total = 7;
   let cur = 1;
-
   const dotsEl = document.getElementById('dots');
   for (let i = 1; i <= total; i++) {
     const d = document.createElement('button');
@@ -850,27 +965,22 @@
     d.onclick = () => goTo(i);
     dotsEl.appendChild(d);
   }
-
   function go(dir) { goTo(cur + dir); }
-
   function goTo(n) {
     if (n < 1 || n > total) return;
     document.getElementById('s' + cur).classList.remove('active');
     cur = n;
     document.getElementById('s' + cur).classList.add('active');
-    document.querySelectorAll('.nav-dot').forEach((d, i) => {
-      d.classList.toggle('active', i + 1 === cur);
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i + 1 === cur));
     document.getElementById('prevBtn').disabled = cur === 1;
     document.getElementById('nextBtn').disabled = cur === total;
   }
-
   function toggleExp(btn) {
     const body = btn.nextElementSibling;
     const open = body.classList.toggle('open');
     btn.textContent = open ? 'Ocultar ↑' : 'Ver expectativas ↓';
   }
-
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') go(1);
     if (e.key === 'ArrowLeft') go(-1);
