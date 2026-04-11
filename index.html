@@ -9,21 +9,21 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --gold: #1565C0;
-    --gold-light: #1E88E5;
-    --gold-pale: #E3F2FD;
+    --gold: #FFFFFF;
+    --gold-light: #FFE082;
+    --gold-pale: #FFF9C4;
     --dark: #0D47A1;
     --dark-2: #1565C0;
     --dark-3: #1976D2;
     --dark-4: #1E88E5;
     --text-primary: #FFFFFF;
-    --text-secondary: #BBDEFB;
-    --text-muted: #90CAF9;
-    --accent-int: #00897B;
+    --text-secondary: #E3F2FD;
+    --text-muted: #BBDEFB;
+    --accent-int: #00BFA5;
     --accent-int-light: #B2DFDB;
-    --accent-ext: #E53935;
+    --accent-ext: #FF5252;
     --accent-ext-light: #FFCDD2;
-    --border: rgba(255,255,255,0.25);
+    --border: rgba(255,255,255,0.3);
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
@@ -70,7 +70,7 @@
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid #FFE082;
     padding-left: 3rem;
     margin-left: 1rem;
   }
@@ -120,7 +120,7 @@
     font-family: var(--serif);
     font-size: 8rem;
     font-weight: 700;
-    color: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.08);
     line-height: 1;
     user-select: none;
   }
@@ -129,7 +129,7 @@
   .slide-header {
     margin-bottom: 2.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
   }
   .slide-number {
     font-size: 10px;
@@ -153,8 +153,8 @@
     flex: 1;
   }
   .org-card {
-    background: var(--dark-3);
-    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 4px;
     padding: 1.5rem;
   }
@@ -174,9 +174,9 @@
   .org-card-text strong { color: var(--text-primary); font-weight: 500; }
   .org-pill {
     display: inline-block;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: var(--gold-light);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #FFFFFF;
     font-size: 11px;
     padding: 3px 10px;
     border-radius: 2px;
@@ -194,7 +194,7 @@
     border-radius: 4px;
     padding: 1.25rem;
     border-left: 3px solid;
-    background: var(--dark-3);
+    background: rgba(0,0,0,0.25);
   }
   .stk-card.interno { border-color: var(--accent-int); }
   .stk-card.externo { border-color: var(--accent-ext); }
@@ -273,7 +273,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: var(--dark-2);
+    background: rgba(0,0,0,0.4);
     position: relative;
     z-index: 2;
   }
@@ -375,7 +375,7 @@
   }
   .ae-triada span { color: var(--gold-light); }
   .ae-card {
-    background: var(--dark-3); border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.3);
     border-radius: 4px; padding: 0.75rem 0.85rem;
     position: relative; overflow: hidden;
   }
@@ -425,8 +425,8 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: var(--dark-3);
-    border: 1px solid var(--border);
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 50px;
     padding: 0.6rem 1.2rem;
     z-index: 100;
@@ -442,7 +442,7 @@
     transition: background 0.2s, color 0.2s;
     font-family: var(--sans);
   }
-  .nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--gold-light); }
+  .nav-btn:hover { background: rgba(255,255,255,0.15); color: #FFE082; }
   .nav-btn:disabled { opacity: 0.3; cursor: default; }
   .nav-dots { display: flex; gap: 6px; align-items: center; }
   .nav-dot {
@@ -452,7 +452,7 @@
     transition: background 0.2s, transform 0.2s;
     border: none;
   }
-  .nav-dot.active { background: var(--gold-light); transform: scale(1.3); }
+  .nav-dot.active { background: #FFE082; transform: scale(1.3); }
 
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
 </style>
