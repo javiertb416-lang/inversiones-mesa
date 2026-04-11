@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inversiones Mesa Mesa – Taller 2</title>
+<title>Inversiones Mesa Mesa – Talleres 2 & 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -328,6 +328,91 @@
   }
   .map-label.int { color: #6EC49A; }
   .map-label.ext { color: #C46E6E; }
+
+  /* ── SLIDE 6: TALLER 3 ── */
+  .ae-context {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-light);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .ae-context strong { color: var(--text-primary); }
+  .ae-diagram {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 140px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    min-height: 0;
+  }
+  .ae-col { display: flex; flex-direction: column; gap: 0.75rem; }
+  .ae-center-wrap {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.6rem;
+  }
+  .ae-center-node {
+    width: 118px; height: 118px; border-radius: 50%;
+    border: 2px solid var(--gold); background: var(--dark-2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    box-shadow: 0 0 0 8px rgba(184,134,11,0.07);
+  }
+  .ae-center-node span:first-child {
+    font-family: var(--serif); font-size: 10.5px; font-weight: 700;
+    color: var(--gold-light); line-height: 1.3;
+  }
+  .ae-center-node span:last-child { font-size: 7.5px; color: var(--text-muted); margin-top: 3px; }
+  .ae-triada {
+    font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-muted); text-align: center; line-height: 1.8;
+  }
+  .ae-triada span { color: var(--gold-light); }
+  .ae-card {
+    background: var(--dark-3); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 4px; padding: 0.75rem 0.85rem;
+    position: relative; overflow: hidden;
+  }
+  .ae-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  }
+  .ae-card.int::before  { background: #4A8C6F; }
+  .ae-card.ext::before  { background: #8C4A4A; }
+  .ae-card.gold::before { background: var(--gold-light); }
+  .ae-card.blue::before { background: #3A5FAA; }
+  .ae-card-badge {
+    display: inline-block; font-size: 7px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+    margin-bottom: 0.35rem; font-weight: 700;
+  }
+  .ae-card.int .ae-card-badge  { background: rgba(74,140,111,0.15); color: #6EC49A; }
+  .ae-card.ext .ae-card-badge  { background: rgba(140,74,74,0.15);  color: #C46E6E; }
+  .ae-card.gold .ae-card-badge { background: rgba(184,134,11,0.15); color: var(--gold-light); }
+  .ae-card.blue .ae-card-badge { background: rgba(58,95,170,0.15);  color: #7BA8E8; }
+  .ae-card-num {
+    position: absolute; top: 0.4rem; right: 0.6rem;
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 700;
+    opacity: 0.1; color: var(--text-primary); line-height: 1;
+  }
+  .ae-card-title {
+    font-family: var(--serif); font-size: 12.5px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.25;
+  }
+  .ae-card-who { font-size: 10px; font-weight: 500; margin-bottom: 0.3rem; }
+  .ae-card.int .ae-card-who  { color: #6EC49A; }
+  .ae-card.ext .ae-card-who  { color: #C46E6E; }
+  .ae-card.gold .ae-card-who { color: var(--gold-light); }
+  .ae-card.blue .ae-card-who { color: #7BA8E8; }
+  .ae-card-desc { font-size: 9px; color: var(--text-muted); line-height: 1.55; }
+  .ae-source {
+    text-align: center; font-size: 9px; color: var(--text-muted);
+    letter-spacing: 1px; padding-top: 0.6rem;
+    border-top: 1px solid rgba(184,134,11,0.1); margin-top: 0.5rem;
+  }
 
   /* ── NAV ── */
   .nav {
@@ -676,6 +761,75 @@
     </div>
   </div>
 
+  <!-- SLIDE 6: TALLER 3 — CAPACIDADES DE AE -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <p class="slide-number">05 · Taller 3 — Capacidades de Arquitectura Empresarial</p>
+      <h2 class="slide-title">Equipo de Capacidades de AE</h2>
+    </div>
+
+    <div class="ae-context">
+      <strong>Situación actual:</strong> Las decisiones de transformación las toma el Representante Legal directamente, sin filtro previo.
+      &nbsp;→&nbsp;
+      <strong>Propuesta:</strong> conformar un equipo multidisciplinario que evalúe el impacto en <strong>personas, procesos y tecnología</strong> antes de aprobar cualquier iniciativa.
+    </div>
+
+    <div class="ae-diagram">
+
+      <!-- LEFT COLUMN: internos -->
+      <div class="ae-col">
+        <div class="ae-card int">
+          <div class="ae-card-num">01</div>
+          <span class="ae-card-badge">Interno</span>
+          <p class="ae-card-title">Estrategia</p>
+          <p class="ae-card-who">Representante Legal</p>
+          <p class="ae-card-desc">Define el rumbo estratégico y actúa como filtro principal ante cualquier proyecto de transformación organizacional.</p>
+        </div>
+        <div class="ae-card int">
+          <div class="ae-card-num">02</div>
+          <span class="ae-card-badge">Interno</span>
+          <p class="ae-card-title">Procesos y Cambio</p>
+          <p class="ae-card-who">Gerente</p>
+          <p class="ae-card-desc">Mapea flujos operativos y lidera la apropiación cultural. Gestiona el impacto en personas ante cualquier cambio.</p>
+        </div>
+      </div>
+
+      <!-- CENTER NODE -->
+      <div class="ae-center-wrap">
+        <div class="ae-center-node">
+          <span>Inversiones<br>Mesa Mesa</span>
+          <span>Nodo central</span>
+        </div>
+        <p class="ae-triada">
+          <span>Personas</span>
+          <span>Procesos</span>
+          <span>Tecnología</span>
+        </p>
+      </div>
+
+      <!-- RIGHT COLUMN: externos -->
+      <div class="ae-col">
+        <div class="ae-card gold">
+          <div class="ae-card-num">03</div>
+          <span class="ae-card-badge">Externo</span>
+          <p class="ae-card-title">Riesgos y Cumplimiento</p>
+          <p class="ae-card-who">Oficial de Cumplimiento (rol ampliado)</p>
+          <p class="ae-card-desc">Evalúa riesgos financieros, regulatorios y de transformación. Gestiona SARLAFT y exposición fiscal (DIAN).</p>
+        </div>
+        <div class="ae-card blue">
+          <div class="ae-card-num">04</div>
+          <span class="ae-card-badge">Externo</span>
+          <p class="ae-card-title">Tecnología</p>
+          <p class="ae-card-who">Consultor Externo</p>
+          <p class="ae-card-desc">Evalúa impacto en plataformas financieras, sistemas contables y herramientas de inversión ante cada decisión.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="ae-source">Basado en caso EAFIT – Proyecto EPIC (2022) &nbsp;·&nbsp; Sistemas Integrados de Gestión – EAFIT</p>
+  </div>
+
 </div>
 
 <!-- NAV -->
@@ -686,7 +840,7 @@
 </nav>
 
 <script>
-  const total = 5;
+  const total = 6;
   let cur = 1;
 
   const dotsEl = document.getElementById('dots');
