@@ -492,78 +492,106 @@
 
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
 
-  /* ── FONDOS DIFUMINADOS ── */
+  /* ── FONDOS DECORATIVOS ── */
   @keyframes blob-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33%       { transform: translate(30px, -20px) scale(1.05); }
-    66%       { transform: translate(-20px, 15px) scale(0.97); }
+    0%, 100% { transform: translate(0,0) scale(1); }
+    40%       { transform: translate(40px,-30px) scale(1.08); }
+    70%       { transform: translate(-25px,20px) scale(0.95); }
   }
   @keyframes blob-float-alt {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33%       { transform: translate(-25px, 20px) scale(1.04); }
-    66%       { transform: translate(20px, -15px) scale(0.98); }
+    0%, 100% { transform: translate(0,0) scale(1); }
+    40%       { transform: translate(-35px,25px) scale(1.06); }
+    70%       { transform: translate(25px,-20px) scale(0.96); }
   }
 
   .slide { position: relative; overflow: hidden; }
 
-  /* Blob 1 — esquina superior derecha */
+  /* Textura de puntos en toda la slide */
   .slide::before {
     content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(100,181,246,0.22) 0%, transparent 70%);
-    filter: blur(40px);
-    animation: blob-float 12s ease-in-out infinite;
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Blob 2 — esquina inferior izquierda */
+  /* Gran blob superior derecho — muy visible */
   .slide::after {
     content: '';
     position: absolute;
-    bottom: -60px; left: -60px;
-    width: 320px; height: 320px;
+    top: -120px; right: -120px;
+    width: 520px; height: 520px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,191,165,0.18) 0%, transparent 70%);
-    filter: blur(45px);
-    animation: blob-float-alt 15s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(100,181,246,0.38) 0%, rgba(30,136,229,0.15) 45%, transparent 70%);
+    filter: blur(55px);
+    animation: blob-float 14s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Blob 3 — centro difuminado (fondo sutil de profundidad) */
+  /* Blob inferior izquierdo — turquesa fuerte */
   .blob-mid {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px; height: 300px;
+    bottom: -100px; left: -100px;
+    width: 450px; height: 450px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(255,224,130,0.07) 0%, transparent 65%);
-    filter: blur(50px);
+    background: radial-gradient(circle, rgba(0,191,165,0.35) 0%, rgba(0,150,136,0.12) 50%, transparent 70%);
+    filter: blur(55px);
     pointer-events: none;
     z-index: 0;
-    animation: blob-float 18s ease-in-out infinite;
+    animation: blob-float-alt 17s ease-in-out infinite;
   }
 
-  /* Blob accent — diagonal opuesto para variedad */
+  /* Blob dorado central — da calidez */
   .blob-accent {
     position: absolute;
-    top: 30%; right: -40px;
-    width: 200px; height: 400px;
+    top: 40%; left: 35%;
+    width: 400px; height: 250px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(255,82,82,0.1) 0%, transparent 70%);
-    filter: blur(50px);
+    background: radial-gradient(ellipse, rgba(255,224,130,0.15) 0%, transparent 65%);
+    filter: blur(60px);
     pointer-events: none;
     z-index: 0;
-    animation: blob-float-alt 20s ease-in-out infinite;
+    animation: blob-float 22s ease-in-out infinite;
   }
 
-  /* Asegurar que el contenido quede sobre los blobs */
+  /* Línea decorativa diagonal esquina superior izquierda */
+  .deco-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 180px; height: 180px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+  }
+  .deco-line::before, .deco-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+    transform-origin: left center;
+  }
+  .deco-line::before { transform: rotate(25deg) translateY(40px); }
+  .deco-line::after  { transform: rotate(15deg) translateY(70px); width: 130px; }
+
+  /* Círculo decorativo esquina inferior derecha */
+  .deco-circle {
+    position: absolute;
+    bottom: 40px; right: 40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: 0 0 0 20px rgba(255,255,255,0.04), 0 0 0 40px rgba(255,255,255,0.025);
+  }
+
+  /* Z-index para que todo el contenido quede encima */
   .slide-header, .org-grid, .stk-grid, .map-wrap, .ae-context,
-  .ae-diagram, .ae-source, .cover, .cover-year, .tag-row {
+  .ae-diagram, .ae-source, .cover, .cover-year, .tag-row, .ae-col,
+  .ae-center-wrap, nav {
     position: relative;
     z-index: 1;
   }
@@ -578,6 +606,8 @@
   <div class="slide active" id="s1">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div style="flex:1; display:flex; flex-direction:column; justify-content:center; position:relative;">
       <div class="cover">
         <p class="cover-eyebrow">Taller 2 · Sistemas Integrados de Gestión · EAFIT</p>
@@ -606,6 +636,8 @@
   <div class="slide" id="s2">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div class="slide-header">
       <p class="slide-number">01 · La organización</p>
       <h2 class="slide-title">¿Quiénes somos?</h2>
@@ -645,6 +677,8 @@
   <div class="slide" id="s3">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div class="slide-header">
       <p class="slide-number">02 · Stakeholders internos</p>
       <h2 class="slide-title">¿Quién mueve la organización desde adentro?</h2>
@@ -726,6 +760,8 @@
   <div class="slide" id="s4">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div class="slide-header">
       <p class="slide-number">03 · Stakeholders externos</p>
       <h2 class="slide-title">¿Quién influye desde afuera?</h2>
@@ -824,6 +860,8 @@
   <div class="slide" id="s5">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div class="slide-header">
       <p class="slide-number">04 · Mapa de relaciones</p>
       <h2 class="slide-title">Ecosistema de stakeholders</h2>
@@ -904,6 +942,8 @@
   <div class="slide" id="s6">
     <div class="blob-mid"></div>
     <div class="blob-accent"></div>
+    <div class="deco-line"></div>
+    <div class="deco-circle"></div>
     <div class="slide-header">
       <p class="slide-number">05 · Taller 3 — Capacidades de Arquitectura Empresarial</p>
       <h2 class="slide-title">Equipo de Capacidades de AE</h2>
