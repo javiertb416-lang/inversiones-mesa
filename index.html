@@ -9,21 +9,21 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --gold: #FFFFFF;
-    --gold-light: #FFE082;
-    --gold-pale: #FFF9C4;
-    --dark: #0D47A1;
-    --dark-2: #1565C0;
-    --dark-3: #1976D2;
-    --dark-4: #1E88E5;
-    --text-primary: #FFFFFF;
-    --text-secondary: #E3F2FD;
-    --text-muted: #BBDEFB;
-    --accent-int: #00BFA5;
-    --accent-int-light: #B2DFDB;
-    --accent-ext: #FF5252;
-    --accent-ext-light: #FFCDD2;
-    --border: rgba(255,255,255,0.3);
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5EDD0;
+    --dark: #0E0E0E;
+    --dark-2: #1A1A1A;
+    --dark-3: #252525;
+    --dark-4: #303030;
+    --text-primary: #F0EAD6;
+    --text-secondary: #A89880;
+    --text-muted: #6B6055;
+    --accent-int: #4A8C6F;
+    --accent-int-light: #D6EEE3;
+    --accent-ext: #8C4A4A;
+    --accent-ext-light: #EED6D6;
+    --border: rgba(184,134,11,0.2);
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
@@ -36,9 +36,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    overflow-y: auto;
-    overflow-x: hidden;
+    justify-content: center;
+    overflow: hidden;
   }
 
   .presentation {
@@ -54,9 +53,8 @@
     display: none;
     flex-direction: column;
     min-height: 100vh;
-    padding: 3rem 3.5rem 5rem;
+    padding: 3rem 3.5rem 2rem;
     animation: fadeIn 0.5s ease;
-    overflow-y: auto;
   }
   .slide.active { display: flex; }
 
@@ -70,7 +68,7 @@
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    border-left: 2px solid #FFE082;
+    border-left: 2px solid var(--gold);
     padding-left: 3rem;
     margin-left: 1rem;
   }
@@ -120,7 +118,7 @@
     font-family: var(--serif);
     font-size: 8rem;
     font-weight: 700;
-    color: rgba(255,255,255,0.08);
+    color: rgba(184,134,11,0.06);
     line-height: 1;
     user-select: none;
   }
@@ -129,7 +127,7 @@
   .slide-header {
     margin-bottom: 2.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid var(--border);
   }
   .slide-number {
     font-size: 10px;
@@ -153,8 +151,8 @@
     flex: 1;
   }
   .org-card {
-    background: rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: var(--dark-3);
+    border: 1px solid var(--border);
     border-radius: 4px;
     padding: 1.5rem;
   }
@@ -174,9 +172,9 @@
   .org-card-text strong { color: var(--text-primary); font-weight: 500; }
   .org-pill {
     display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.5);
-    color: #FFFFFF;
+    background: rgba(184,134,11,0.12);
+    border: 1px solid rgba(184,134,11,0.25);
+    color: var(--gold-light);
     font-size: 11px;
     padding: 3px 10px;
     border-radius: 2px;
@@ -194,7 +192,7 @@
     border-radius: 4px;
     padding: 1.25rem;
     border-left: 3px solid;
-    background: rgba(0,0,0,0.25);
+    background: var(--dark-3);
   }
   .stk-card.interno { border-color: var(--accent-int); }
   .stk-card.externo { border-color: var(--accent-ext); }
@@ -202,28 +200,28 @@
     font-family: var(--serif);
     font-size: 1.6rem;
     font-weight: 700;
-    opacity: 0.55;
+    opacity: 0.18;
     line-height: 1;
     margin-bottom: 0.25rem;
   }
   .stk-card.interno .stk-card-num { color: var(--accent-int); }
   .stk-card.externo .stk-card-num { color: var(--accent-ext); }
   .stk-card-name {
-    font-size: 15.5px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-primary);
     margin-bottom: 0.4rem;
     line-height: 1.3;
   }
   .stk-card-desc {
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
     margin-bottom: 0.75rem;
   }
   .stk-exp-toggle {
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     cursor: pointer;
     color: var(--gold-light);
@@ -242,18 +240,17 @@
   .stk-exp-body.open { display: block; }
   .stk-exp-section { margin-bottom: 0.6rem; }
   .stk-exp-label {
-    font-size: 11px;
-    letter-spacing: 1.5px;
+    font-size: 9px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 4px;
-    font-weight: 600;
   }
   .stk-card.interno .stk-exp-label { color: var(--accent-int); }
   .stk-card.externo .stk-exp-label { color: var(--accent-ext); }
   .stk-exp-text {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.55;
   }
 
   /* ── SLIDE 5: MAPA ── */
@@ -265,77 +262,48 @@
     position: relative;
   }
   .map-center {
-    width: 140px;
-    height: 140px;
-    border: 3px solid #FFE082;
+    width: 110px;
+    height: 110px;
+    border: 2px solid var(--gold);
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: rgba(0,0,20,0.55);
+    background: var(--dark-2);
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 0 12px rgba(255,224,130,0.08);
   }
   .map-center span:first-child {
     font-family: var(--serif);
-    font-size: 13px;
-    color: #FFE082;
+    font-size: 11px;
+    color: var(--gold-light);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.2;
   }
   .map-center span:last-child {
-    font-size: 11px;
-    color: #BBDEFB;
-    margin-top: 4px;
-  }
-  @keyframes ring-spin {
-    from { transform: translate(-50%,-50%) rotate(0deg); }
-    to   { transform: translate(-50%,-50%) rotate(360deg); }
-  }
-  @keyframes ring-spin-rev {
-    from { transform: translate(-50%,-50%) rotate(0deg); }
-    to   { transform: translate(-50%,-50%) rotate(-360deg); }
-  }
-  @keyframes pulse-line {
-    0%   { stroke-dashoffset: 300; opacity: 0.3; }
-    50%  { opacity: 0.9; }
-    100% { stroke-dashoffset: 0; opacity: 0.3; }
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-top: 3px;
   }
   .map-ring {
     position: absolute;
-    top: 50%; left: 50%;
     border-radius: 50%;
-    border: 1.5px dashed;
+    border: 1px dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
   }
   .map-ring.inner {
-    width: 280px; height: 280px;
-    border-color: rgba(0,191,165,0.5);
-    animation: ring-spin 28s linear infinite;
+    width: 300px; height: 300px;
+    border-color: rgba(74,140,111,0.3);
   }
   .map-ring.outer {
-    width: 460px; height: 460px;
-    border-color: rgba(255,82,82,0.45);
-    animation: ring-spin-rev 45s linear infinite;
+    width: 500px; height: 500px;
+    border-color: rgba(140,74,74,0.3);
   }
-  .map-svg {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    overflow: visible;
-  }
-  .map-svg line {
-    stroke-dasharray: 6 4;
-    stroke-width: 1.5;
-    stroke-dashoffset: 300;
-    animation: pulse-line 3s ease-in-out infinite;
-  }
-  .map-svg line.int { stroke: rgba(0,191,165,0.7); }
-  .map-svg line.ext { stroke: rgba(255,82,82,0.6); }
   .map-node {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -346,110 +314,104 @@
     cursor: default;
   }
   .map-dot {
-    width: 14px; height: 14px;
+    width: 10px; height: 10px;
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255,255,255,0.3);
   }
   .map-dot.int { background: var(--accent-int); }
   .map-dot.ext { background: var(--accent-ext); }
   .map-label {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 10px;
     text-align: center;
     line-height: 1.3;
-    max-width: 110px;
+    max-width: 80px;
     white-space: nowrap;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
   }
-  .map-label.int { color: #80DEEA; }
-  .map-label.ext { color: #FF8A80; }
+  .map-label.int { color: #6EC49A; }
+  .map-label.ext { color: #C46E6E; }
 
   /* ── SLIDE 6: TALLER 3 ── */
   .ae-context {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-left: 4px solid #FFE082;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-light);
     border-radius: 4px;
-    padding: 0.85rem 1rem;
-    margin-bottom: 1rem;
-    font-size: 14px;
-    color: #FFFFFF;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 11px;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
   .ae-context strong { color: var(--text-primary); }
   .ae-diagram {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr 160px 1fr;
-    gap: 1rem;
-    align-items: stretch;
+    grid-template-columns: 1fr 140px 1fr;
+    gap: 0.75rem;
+    align-items: center;
     min-height: 0;
   }
-  .ae-col { display: flex; flex-direction: column; gap: 1rem; }
+  .ae-col { display: flex; flex-direction: column; gap: 0.75rem; }
   .ae-center-wrap {
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.8rem;
-    height: 100%;
+    align-items: center; justify-content: center; gap: 0.6rem;
   }
   .ae-center-node {
-    width: 130px; height: 130px; border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.8); background: rgba(0,0,0,0.35);
+    width: 118px; height: 118px; border-radius: 50%;
+    border: 2px solid var(--gold); background: var(--dark-2);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
-    box-shadow: 0 0 0 10px rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 8px rgba(184,134,11,0.07);
   }
   .ae-center-node span:first-child {
-    font-family: var(--sans); font-size: 13.5px; font-weight: 700;
-    color: #FFE082; line-height: 1.3;
+    font-family: var(--serif); font-size: 10.5px; font-weight: 700;
+    color: var(--gold-light); line-height: 1.3;
   }
-  .ae-center-node span:last-child { font-size: 11px; color: #BBDEFB; margin-top: 4px; font-family: var(--sans); }
+  .ae-center-node span:last-child { font-size: 7.5px; color: var(--text-muted); margin-top: 3px; }
   .ae-triada {
-    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-    color: #BBDEFB; text-align: center; line-height: 2;
-    font-family: var(--sans);
+    font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-muted); text-align: center; line-height: 1.8;
   }
   .ae-triada span { color: var(--gold-light); }
   .ae-card {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 4px; padding: 1rem 1.1rem;
+    background: var(--dark-3); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 4px; padding: 0.75rem 0.85rem;
     position: relative; overflow: hidden;
-    flex: 1; display: flex; flex-direction: column; justify-content: flex-start;
   }
   .ae-card::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
   }
-  .ae-card.int::before  { background: #00BFA5; }
-  .ae-card.ext::before  { background: #FF5252; }
+  .ae-card.int::before  { background: #4A8C6F; }
+  .ae-card.ext::before  { background: #8C4A4A; }
   .ae-card.gold::before { background: var(--gold-light); }
-  .ae-card.blue::before { background: #64B5F6; }
+  .ae-card.blue::before { background: #3A5FAA; }
   .ae-card-badge {
-    display: inline-block; font-size: 11px; letter-spacing: 1px;
-    text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
-    margin-bottom: 0.5rem; font-weight: 700; font-family: var(--sans);
+    display: inline-block; font-size: 7px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+    margin-bottom: 0.35rem; font-weight: 700;
   }
-  .ae-card.int .ae-card-badge  { background: rgba(74,140,111,0.15); color: #80CBC4; }
-  .ae-card.ext .ae-card-badge  { background: rgba(140,74,74,0.15);  color: #EF9A9A; }
-  .ae-card.gold .ae-card-badge { background: rgba(255,255,255,0.15); color: var(--gold-light); }
+  .ae-card.int .ae-card-badge  { background: rgba(74,140,111,0.15); color: #6EC49A; }
+  .ae-card.ext .ae-card-badge  { background: rgba(140,74,74,0.15);  color: #C46E6E; }
+  .ae-card.gold .ae-card-badge { background: rgba(184,134,11,0.15); color: var(--gold-light); }
   .ae-card.blue .ae-card-badge { background: rgba(58,95,170,0.15);  color: #7BA8E8; }
   .ae-card-num {
     position: absolute; top: 0.4rem; right: 0.6rem;
     font-family: var(--serif); font-size: 1.3rem; font-weight: 700;
-    opacity: 0.45; color: var(--text-primary); line-height: 1;
+    opacity: 0.1; color: var(--text-primary); line-height: 1;
   }
   .ae-card-title {
-    font-family: var(--sans); font-size: 16px; font-weight: 700;
-    color: var(--text-primary); margin-bottom: 0.25rem; line-height: 1.25;
+    font-family: var(--serif); font-size: 12.5px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.25;
   }
-  .ae-card-who { font-size: 13.5px; font-weight: 500; margin-bottom: 0.35rem; font-family: var(--sans); }
-  .ae-card.int .ae-card-who  { color: #80CBC4; }
-  .ae-card.ext .ae-card-who  { color: #EF9A9A; }
+  .ae-card-who { font-size: 10px; font-weight: 500; margin-bottom: 0.3rem; }
+  .ae-card.int .ae-card-who  { color: #6EC49A; }
+  .ae-card.ext .ae-card-who  { color: #C46E6E; }
   .ae-card.gold .ae-card-who { color: var(--gold-light); }
   .ae-card.blue .ae-card-who { color: #7BA8E8; }
-  .ae-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-top: 0.25rem; font-family: var(--sans); }
+  .ae-card-desc { font-size: 9px; color: var(--text-muted); line-height: 1.55; }
   .ae-source {
-    text-align: center; font-size: 12px; color: #BBDEFB;
+    text-align: center; font-size: 9px; color: var(--text-muted);
     letter-spacing: 1px; padding-top: 0.6rem;
-    border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0.5rem;
+    border-top: 1px solid rgba(184,134,11,0.1); margin-top: 0.5rem;
   }
 
   /* ── NAV ── */
@@ -461,8 +423,8 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: var(--dark-3);
+    border: 1px solid var(--border);
     border-radius: 50px;
     padding: 0.6rem 1.2rem;
     z-index: 100;
@@ -478,7 +440,7 @@
     transition: background 0.2s, color 0.2s;
     font-family: var(--sans);
   }
-  .nav-btn:hover { background: rgba(255,255,255,0.15); color: #FFE082; }
+  .nav-btn:hover { background: rgba(184,134,11,0.1); color: var(--gold-light); }
   .nav-btn:disabled { opacity: 0.3; cursor: default; }
   .nav-dots { display: flex; gap: 6px; align-items: center; }
   .nav-dot {
@@ -488,118 +450,9 @@
     transition: background 0.2s, transform 0.2s;
     border: none;
   }
-  .nav-dot.active { background: #FFE082; transform: scale(1.3); }
+  .nav-dot.active { background: var(--gold-light); transform: scale(1.3); }
 
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
-
-  /* ── FONDOS DECORATIVOS ── */
-  @keyframes blob-float {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    40%       { transform: translate(40px,-30px) scale(1.08); }
-    70%       { transform: translate(-25px,20px) scale(0.95); }
-  }
-  @keyframes blob-float-alt {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    40%       { transform: translate(-35px,25px) scale(1.06); }
-    70%       { transform: translate(25px,-20px) scale(0.96); }
-  }
-
-  .slide { position: relative; overflow: hidden; }
-
-  /* Textura de puntos en toda la slide */
-  .slide::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Gran blob superior derecho — muy visible */
-  .slide::after {
-    content: '';
-    position: absolute;
-    top: -120px; right: -120px;
-    width: 520px; height: 520px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(100,181,246,0.38) 0%, rgba(30,136,229,0.15) 45%, transparent 70%);
-    filter: blur(55px);
-    animation: blob-float 14s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Blob inferior izquierdo — turquesa fuerte */
-  .blob-mid {
-    position: absolute;
-    bottom: -100px; left: -100px;
-    width: 450px; height: 450px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,191,165,0.35) 0%, rgba(0,150,136,0.12) 50%, transparent 70%);
-    filter: blur(55px);
-    pointer-events: none;
-    z-index: 0;
-    animation: blob-float-alt 17s ease-in-out infinite;
-  }
-
-  /* Blob dorado central — da calidez */
-  .blob-accent {
-    position: absolute;
-    top: 40%; left: 35%;
-    width: 400px; height: 250px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(255,224,130,0.15) 0%, transparent 65%);
-    filter: blur(60px);
-    pointer-events: none;
-    z-index: 0;
-    animation: blob-float 22s ease-in-out infinite;
-  }
-
-  /* Línea decorativa diagonal esquina superior izquierda */
-  .deco-line {
-    position: absolute;
-    top: 0; left: 0;
-    width: 180px; height: 180px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.18;
-  }
-  .deco-line::before, .deco-line::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
-    transform-origin: left center;
-  }
-  .deco-line::before { transform: rotate(25deg) translateY(40px); }
-  .deco-line::after  { transform: rotate(15deg) translateY(70px); width: 130px; }
-
-  /* Engranaje decorativo esquina inferior derecha */
-  @keyframes gear-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  .deco-circle {
-    position: absolute;
-    bottom: 30px; right: 30px;
-    width: 120px; height: 120px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.18;
-    animation: gear-spin 25s linear infinite;
-    transform-origin: center;
-  }
-
-  /* Z-index para que todo el contenido quede encima */
-  .slide-header, .org-grid, .stk-grid, .map-wrap, .ae-context,
-  .ae-diagram, .ae-source, .cover, .cover-year, .tag-row, .ae-col,
-  .ae-center-wrap, nav {
-    position: relative;
-    z-index: 1;
-  }
-
 </style>
 </head>
 <body>
@@ -608,12 +461,6 @@
 
   <!-- SLIDE 1: COVER -->
   <div class="slide active" id="s1">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div style="flex:1; display:flex; flex-direction:column; justify-content:center; position:relative;">
       <div class="cover">
         <p class="cover-eyebrow">Taller 2 · Sistemas Integrados de Gestión · EAFIT</p>
@@ -640,12 +487,6 @@
 
   <!-- SLIDE 2: LA ORGANIZACIÓN -->
   <div class="slide" id="s2">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div class="slide-header">
       <p class="slide-number">01 · La organización</p>
       <h2 class="slide-title">¿Quiénes somos?</h2>
@@ -683,12 +524,6 @@
 
   <!-- SLIDE 3: STAKEHOLDERS INTERNOS -->
   <div class="slide" id="s3">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div class="slide-header">
       <p class="slide-number">02 · Stakeholders internos</p>
       <h2 class="slide-title">¿Quién mueve la organización desde adentro?</h2>
@@ -768,12 +603,6 @@
 
   <!-- SLIDE 4: STAKEHOLDERS EXTERNOS -->
   <div class="slide" id="s4">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div class="slide-header">
       <p class="slide-number">03 · Stakeholders externos</p>
       <h2 class="slide-title">¿Quién influye desde afuera?</h2>
@@ -870,12 +699,6 @@
 
   <!-- SLIDE 5: MAPA DE RELACIONES -->
   <div class="slide" id="s5">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div class="slide-header">
       <p class="slide-number">04 · Mapa de relaciones</p>
       <h2 class="slide-title">Ecosistema de stakeholders</h2>
@@ -883,59 +706,45 @@
     <div class="map-wrap">
       <div class="map-ring inner"></div>
       <div class="map-ring outer"></div>
-      <!-- SVG líneas animadas -->
-      <svg class="map-svg" width="520" height="520" viewBox="-260 -260 520 520">
-        <!-- Internos -->
-        <line class="int" x1="0" y1="0" x2="0"    y2="-140" style="animation-delay:0s"/>
-        <line class="int" x1="0" y1="0" x2="140"  y2="0"    style="animation-delay:0.5s"/>
-        <line class="int" x1="0" y1="0" x2="0"    y2="140"  style="animation-delay:1s"/>
-        <line class="int" x1="0" y1="0" x2="-140" y2="0"    style="animation-delay:1.5s"/>
-        <!-- Externos -->
-        <line class="ext" x1="0" y1="0" x2="0"    y2="-230" style="animation-delay:0.3s"/>
-        <line class="ext" x1="0" y1="0" x2="200"  y2="-120" style="animation-delay:0.8s"/>
-        <line class="ext" x1="0" y1="0" x2="200"  y2="120"  style="animation-delay:1.3s"/>
-        <line class="ext" x1="0" y1="0" x2="-200" y2="120"  style="animation-delay:1.8s"/>
-        <line class="ext" x1="0" y1="0" x2="-200" y2="-120" style="animation-delay:2.3s"/>
-      </svg>
       <div class="map-center">
         <span>Inversiones<br>Mesa Mesa</span>
         <span>Medellín · 1976</span>
       </div>
       <!-- INTERNOS (inner ring) -->
-      <div class="map-node" style="left:calc(50%);top:calc(50% - 140px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 150px)">
         <div class="map-dot int"></div>
         <span class="map-label int">Socios<br>Asamblea</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 140px);top:calc(50%)">
+      <div class="map-node" style="left:calc(50% + 150px);top:calc(50%)">
         <div class="map-dot int"></div>
         <span class="map-label int">Comité de<br>Inversiones</span>
       </div>
-      <div class="map-node" style="left:calc(50%);top:calc(50% + 140px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% + 150px)">
         <div class="map-dot int"></div>
         <span class="map-label int">Representante<br>Legal</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 140px);top:calc(50%)">
+      <div class="map-node" style="left:calc(50% - 150px);top:calc(50%)">
         <div class="map-dot int"></div>
         <span class="map-label int">Empleados<br>Directos</span>
       </div>
       <!-- EXTERNOS (outer ring) -->
-      <div class="map-node" style="left:calc(50%);top:calc(50% - 230px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 250px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Contegral<br>Grupo Bios</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 200px);top:calc(50% - 120px)">
+      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% - 130px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Entidades<br>Financieras</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 200px);top:calc(50% + 120px)">
+      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% + 130px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Empresas<br>Receptoras</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 200px);top:calc(50% + 120px)">
+      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% + 130px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Entes<br>Reguladores</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 200px);top:calc(50% - 120px)">
+      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% - 130px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Revisor Fiscal<br>& Cumplimiento</span>
       </div>
@@ -943,23 +752,17 @@
     <div style="display:flex; gap:1.5rem; justify-content:center; padding-bottom:3rem;">
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-int)"></div>
-        <span style="font-size:14px;color:#BBDEFB;font-weight:500">Stakeholders internos</span>
+        <span style="font-size:11px;color:var(--text-muted)">Stakeholders internos</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-ext)"></div>
-        <span style="font-size:14px;color:#BBDEFB;font-weight:500">Stakeholders externos</span>
+        <span style="font-size:11px;color:var(--text-muted)">Stakeholders externos</span>
       </div>
     </div>
   </div>
 
   <!-- SLIDE 6: TALLER 3 — CAPACIDADES DE AE -->
   <div class="slide" id="s6">
-    <div class="blob-mid"></div>
-    <div class="blob-accent"></div>
-    <div class="deco-line"></div>
-    <svg class="deco-circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.90,23.11 L53.73,8.38 L66.27,8.38 L69.10,23.11 L74.32,24.80 L85.27,14.55 L95.42,21.93 L89.05,35.50 L92.27,39.94 L107.15,38.08 L111.03,50.02 L97.90,57.26 L97.90,62.74 L111.03,69.98 L107.15,81.92 L92.27,80.06 L89.05,84.50 L95.42,98.07 L85.27,105.45 L74.32,95.20 L69.10,96.89 L66.27,111.62 L53.73,111.62 L50.90,96.89 L45.68,95.20 L34.73,105.45 L24.58,98.07 L30.95,84.50 L27.73,80.06 L12.85,81.92 L8.97,69.98 L22.10,62.74 L22.10,57.26 L8.97,50.02 L12.85,38.08 L27.73,39.94 L30.95,35.50 L24.58,21.93 L34.73,14.55 L45.68,24.80 Z M74.00,60.00 L73.73,62.73 L72.93,65.36 L71.64,67.78 L69.90,69.90 L67.78,71.64 L65.36,72.93 L62.73,73.73 L60.00,74.00 L57.27,73.73 L54.64,72.93 L52.22,71.64 L50.10,69.90 L48.36,67.78 L47.07,65.36 L46.27,62.73 L46.00,60.00 L46.27,57.27 L47.07,54.64 L48.36,52.22 L50.10,50.10 L52.22,48.36 L54.64,47.07 L57.27,46.27 L60.00,46.00 L62.73,46.27 L65.36,47.07 L67.78,48.36 L69.90,50.10 L71.64,52.22 L72.93,54.64 L73.73,57.27 Z" fill="white" fill-rule="evenodd"/>
-    </svg>
     <div class="slide-header">
       <p class="slide-number">05 · Taller 3 — Capacidades de Arquitectura Empresarial</p>
       <h2 class="slide-title">Equipo de Capacidades de AE</h2>
