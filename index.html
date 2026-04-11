@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inversiones Mesa Mesa – Taller 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --gold-pale: #F5EDD0;
+    --dark: #0E0E0E;
+    --dark-2: #1A1A1A;
+    --dark-3: #252525;
+    --dark-4: #303030;
+    --text-primary: #F0EAD6;
+    --text-secondary: #A89880;
+    --text-muted: #6B6055;
+    --accent-int: #4A8C6F;
+    --accent-int-light: #D6EEE3;
+    --accent-ext: #8C4A4A;
+    --accent-ext-light: #EED6D6;
+    --border: rgba(184,134,11,0.2);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .presentation {
+    width: 100%;
+    max-width: 900px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .slide {
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 3rem 3.5rem 2rem;
+    animation: fadeIn 0.5s ease;
+  }
+  .slide.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SLIDE 1: COVER ── */
+  .cover {
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    border-left: 2px solid var(--gold);
+    padding-left: 3rem;
+    margin-left: 1rem;
+  }
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .cover-title span { color: var(--gold-light); }
+  .cover-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .cover-year {
+    position: absolute;
+    right: 0;
+    bottom: 3rem;
+    font-family: var(--serif);
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(184,134,11,0.06);
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── SLIDE HEADER ── */
+  .slide-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .slide-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .slide-title {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* ── SLIDE 2: ORGANIZACIÓN ── */
+  .org-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1;
+  }
+  .org-card {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+  .org-card.full { grid-column: 1 / -1; }
+  .org-card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+  .org-card-text {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .org-card-text strong { color: var(--text-primary); font-weight: 500; }
+  .org-pill {
+    display: inline-block;
+    background: rgba(184,134,11,0.12);
+    border: 1px solid rgba(184,134,11,0.25);
+    color: var(--gold-light);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin: 3px 3px 3px 0;
+  }
+
+  /* ── SLIDES 3 & 4: STAKEHOLDERS ── */
+  .stk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    flex: 1;
+  }
+  .stk-card {
+    border-radius: 4px;
+    padding: 1.25rem;
+    border-left: 3px solid;
+    background: var(--dark-3);
+  }
+  .stk-card.interno { border-color: var(--accent-int); }
+  .stk-card.externo { border-color: var(--accent-ext); }
+  .stk-card-num {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stk-card.interno .stk-card-num { color: var(--accent-int); }
+  .stk-card.externo .stk-card-num { color: var(--accent-ext); }
+  .stk-card-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .stk-card-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+  .stk-exp-toggle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--gold-light);
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--sans);
+  }
+  .stk-exp-toggle:hover { opacity: 0.7; }
+  .stk-exp-body {
+    display: none;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .stk-exp-body.open { display: block; }
+  .stk-exp-section { margin-bottom: 0.6rem; }
+  .stk-exp-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stk-card.interno .stk-exp-label { color: var(--accent-int); }
+  .stk-card.externo .stk-exp-label { color: var(--accent-ext); }
+  .stk-exp-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ── SLIDE 5: MAPA ── */
+  .map-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .map-center {
+    width: 110px;
+    height: 110px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--dark-2);
+    position: relative;
+    z-index: 2;
+  }
+  .map-center span:first-child {
+    font-family: var(--serif);
+    font-size: 11px;
+    color: var(--gold-light);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .map-center span:last-child {
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .map-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .map-ring.inner {
+    width: 300px; height: 300px;
+    border-color: rgba(74,140,111,0.3);
+  }
+  .map-ring.outer {
+    width: 500px; height: 500px;
+    border-color: rgba(140,74,74,0.3);
+  }
+  .map-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: default;
+  }
+  .map-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .map-dot.int { background: var(--accent-int); }
+  .map-dot.ext { background: var(--accent-ext); }
+  .map-label {
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 80px;
+    white-space: nowrap;
+  }
+  .map-label.int { color: #6EC49A; }
+  .map-label.ext { color: #C46E6E; }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    z-index: 100;
+  }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 50px;
+    transition: background 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+  .nav-btn:hover { background: rgba(184,134,11,0.1); color: var(--gold-light); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-dots { display: flex; gap: 6px; align-items: center; }
+  .nav-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+  }
+  .nav-dot.active { background: var(--gold-light); transform: scale(1.3); }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+</style>
+</head>
+<body>
+
+<div class="presentation">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active" id="s1">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; position:relative;">
+      <div class="cover">
+        <p class="cover-eyebrow">Taller 2 · Sistemas Integrados de Gestión · EAFIT</p>
+        <h1 class="cover-title">Inversiones<br><span>Mesa Mesa</span></h1>
+        <p class="cover-subtitle">Grupos de Interés · Análisis de Stakeholders</p>
+        <div class="cover-meta">
+          <div class="cover-meta-item">
+            <label>Fundación</label>
+            <span>1976 · Medellín</span>
+          </div>
+          <div class="cover-meta-item">
+            <label>Actividad</label>
+            <span>Holding Familiar de Inversión</span>
+          </div>
+          <div class="cover-meta-item">
+            <label>Socios</label>
+            <span>5 SAS familiares</span>
+          </div>
+        </div>
+      </div>
+      <div class="cover-year">1976</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: LA ORGANIZACIÓN -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <p class="slide-number">01 · La organización</p>
+      <h2 class="slide-title">¿Quiénes somos?</h2>
+    </div>
+    <div class="org-grid">
+      <div class="org-card full">
+        <p class="org-card-label">Descripción</p>
+        <p class="org-card-text">
+          Sociedad de inversión y protección patrimonial familiar con sede en <strong>Medellín, Colombia</strong>, creada en 1976. Conformada por <strong>5 socios</strong>, cada uno titular de una SAS, siendo estas SAS las accionistas de la sociedad —estructura tipo <strong>holding familiar</strong>. Su principal ingreso proviene de <strong>dividendos de Contegral (Grupo Bios)</strong>, de la cual es inversionista mayoritaria con representación en junta directiva. Su mayor reto es la <strong>gestión regulatoria y fiscal</strong> derivada de ese flujo de dividendos.
+        </p>
+      </div>
+      <div class="org-card">
+        <p class="org-card-label">Misión</p>
+        <p class="org-card-text">Preservar, proteger y multiplicar el patrimonio familiar con disciplina, inteligencia y principios éticos, generando valor sostenible para las actuales y futuras generaciones mediante inversiones estratégicas, diversificadas y responsables.</p>
+      </div>
+      <div class="org-card">
+        <p class="org-card-label">Visión</p>
+        <p class="org-card-text">Ser un legado financiero que trascienda generaciones, consolidando un patrimonio familiar capaz de generar oportunidades, estabilidad y propósito común. En cinco años, que los accionistas disfruten plenamente de las utilidades y del crecimiento sostenible de sus inversiones.</p>
+      </div>
+      <div class="org-card full">
+        <p class="org-card-label">Portafolio de inversiones</p>
+        <div class="tag-row">
+          <span class="org-pill">CDTs</span>
+          <span class="org-pill">Renta fija</span>
+          <span class="org-pill">Fondos de inversión</span>
+          <span class="org-pill">CoHouse (hotelería)</span>
+          <span class="org-pill">GLA (dermocosméticos)</span>
+          <span class="org-pill">Mi Hotel</span>
+          <span class="org-pill">Tahití · La Antigua (agricultura)</span>
+          <span class="org-pill">Contegral / Grupo Bios</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: STAKEHOLDERS INTERNOS -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <p class="slide-number">02 · Stakeholders internos</p>
+      <h2 class="slide-title">¿Quién mueve la organización desde adentro?</h2>
+    </div>
+    <div class="stk-grid">
+
+      <div class="stk-card interno">
+        <div class="stk-card-num">01</div>
+        <p class="stk-card-name">Socios · Asamblea de Socios</p>
+        <p class="stk-card-desc">5 hermanos de la familia Mesa, cada uno titular de una SAS que actúa como accionista. Familia alineada con visión de largo plazo.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">Del grupo hacia IMM</p>
+            <p class="stk-exp-text">Preservación y multiplicación del patrimonio. Distribución oportuna de utilidades. Información transparente sobre el portafolio. Continuidad del legado familiar.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia el grupo</p>
+            <p class="stk-exp-text">Participación activa en la Asamblea. Aporte de capital según compromisos. Respaldo a las decisiones estratégicas aprobadas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card interno">
+        <div class="stk-card-num">02</div>
+        <p class="stk-card-name">Comité de Inversiones</p>
+        <p class="stk-card-desc">Conformado por los mismos socios en su rol evaluador. Aprueba o rechaza cada inversión antes de su ejecución, con criterios técnicos y de riesgo.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">Del grupo hacia IMM</p>
+            <p class="stk-exp-text">Información técnica completa para evaluar cada oportunidad. Cumplimiento del proceso formal de aprobación. Respeto a sus decisiones.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia el grupo</p>
+            <p class="stk-exp-text">Evaluación objetiva con criterio técnico, financiero y de riesgo. Participación activa y oportuna en sesiones del comité.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card interno">
+        <div class="stk-card-num">03</div>
+        <p class="stk-card-name">Representante Legal</p>
+        <p class="stk-card-desc">Miembro de la familia. Representa legalmente a la sociedad, ejecuta las decisiones de la Asamblea y lidera la gestión estratégica.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">Del grupo hacia IMM</p>
+            <p class="stk-exp-text">Autonomía para ejecutar las políticas de inversión. Respaldo de la Asamblea. Acceso completo a información financiera y legal.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia el grupo</p>
+            <p class="stk-exp-text">Cumplimiento de objetivos estratégicos. Reporte oportuno y transparente. Gestión responsable de los recursos de la sociedad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card interno">
+        <div class="stk-card-num">04</div>
+        <p class="stk-card-name">Empleados Directos</p>
+        <p class="stk-card-desc">Gerente (miembro de la familia) y Asistente Administrativa. Son la única nómina directa de la sociedad.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">Del grupo hacia IMM</p>
+            <p class="stk-exp-text">Estabilidad laboral. Remuneración justa. Recursos para desempeñar sus funciones. Instrucciones claras y respaldo institucional.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia el grupo</p>
+            <p class="stk-exp-text">Ejecución eficiente de las tareas operativas. Confidencialidad en el manejo de la información. Compromiso y cumplimiento de políticas internas.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SLIDE 4: STAKEHOLDERS EXTERNOS -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <p class="slide-number">03 · Stakeholders externos</p>
+      <h2 class="slide-title">¿Quién influye desde afuera?</h2>
+    </div>
+    <div class="stk-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+
+      <div class="stk-card externo">
+        <div class="stk-card-num">01</div>
+        <p class="stk-card-name">Contegral / Grupo Bios</p>
+        <p class="stk-card-desc">Principal fuente de ingresos vía dividendos. IMM es inversionista mayoritaria con representación activa en junta directiva.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De Contegral hacia IMM</p>
+            <p class="stk-exp-text">Participación constructiva en junta. Estabilidad como accionista mayoritario. Respaldo a decisiones estratégicas de la empresa.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia Contegral</p>
+            <p class="stk-exp-text">Distribución oportuna y sostenible de dividendos. Transparencia financiera y gestión responsable del negocio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card externo">
+        <div class="stk-card-num">02</div>
+        <p class="stk-card-name">Entidades Financieras</p>
+        <p class="stk-card-desc">Davivienda, Credicorp, Skandia, IRIS, Coltefinanciera, Ban100. Custodian y administran el portafolio tradicional. Relación directa.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De entidades hacia IMM</p>
+            <p class="stk-exp-text">Mantenimiento de saldos e inversiones. Cumplimiento de instrucciones. Apertura a nuevas oportunidades de productos.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia entidades</p>
+            <p class="stk-exp-text">Rentabilidades competitivas. Información periódica y clara del portafolio. Asesoría especializada en recomposición.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card externo">
+        <div class="stk-card-num">03</div>
+        <p class="stk-card-name">Empresas Receptoras de Inversión</p>
+        <p class="stk-card-desc">CoHouse, GLA, Mi Hotel, Tahití / La Antigua. Inversiones alternativas pasivas en hotelería, dermocosméticos y agricultura.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De empresas hacia IMM</p>
+            <p class="stk-exp-text">Capital comprometido en los plazos acordados. Paciencia ante ciclos de largo plazo. Respaldo ante contingencias del negocio.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia empresas</p>
+            <p class="stk-exp-text">Rentabilidad según proyecciones. Información financiera periódica y transparente. Gestión profesional de los planes de negocio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card externo" style="grid-column: 1 / 3;">
+        <div class="stk-card-num">04</div>
+        <p class="stk-card-name">Entes Reguladores y de Control · DIAN · Supersociedades · UIAF</p>
+        <p class="stk-card-desc">Stakeholder de alto riesgo activo: sanción DIAN en 2025 por manejo de impuestos y complicación vigente por impuesto al patrimonio.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De reguladores hacia IMM</p>
+            <p class="stk-exp-text">Cumplimiento oportuno de obligaciones legales y tributarias. Transparencia total en operaciones y estructura societaria. Reportes exactos en plazos requeridos.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia reguladores</p>
+            <p class="stk-exp-text">Normativa clara y estable. Procesos de supervisión eficientes. Canales accesibles para resolver dudas de cumplimiento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stk-card externo">
+        <div class="stk-card-num">05</div>
+        <p class="stk-card-name">Revisor Fiscal y Oficial de Cumplimiento</p>
+        <p class="stk-card-desc">Externos contratados por separado. Críticos dado el dolor regulatorio vigente. Certifican estados financieros y gestionan el SARLAFT.</p>
+        <button class="stk-exp-toggle" onclick="toggleExp(this)">Ver expectativas ↓</button>
+        <div class="stk-exp-body">
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De externos hacia IMM</p>
+            <p class="stk-exp-text">Honorarios oportunos. Acceso completo a la información necesaria. Retroalimentación sobre la calidad del servicio prestado.</p>
+          </div>
+          <div class="stk-exp-section">
+            <p class="stk-exp-label">De IMM hacia externos</p>
+            <p class="stk-exp-text">Asesoría objetiva y actualizada. Reporte oportuno de operaciones inusuales. Confidencialidad absoluta en el manejo de información patrimonial.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SLIDE 5: MAPA DE RELACIONES -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <p class="slide-number">04 · Mapa de relaciones</p>
+      <h2 class="slide-title">Ecosistema de stakeholders</h2>
+    </div>
+    <div class="map-wrap">
+      <div class="map-ring inner"></div>
+      <div class="map-ring outer"></div>
+      <div class="map-center">
+        <span>Inversiones<br>Mesa Mesa</span>
+        <span>Medellín · 1976</span>
+      </div>
+      <!-- INTERNOS (inner ring) -->
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 150px)">
+        <div class="map-dot int"></div>
+        <span class="map-label int">Socios<br>Asamblea</span>
+      </div>
+      <div class="map-node" style="left:calc(50% + 150px);top:calc(50%)">
+        <div class="map-dot int"></div>
+        <span class="map-label int">Comité de<br>Inversiones</span>
+      </div>
+      <div class="map-node" style="left:calc(50%);top:calc(50% + 150px)">
+        <div class="map-dot int"></div>
+        <span class="map-label int">Representante<br>Legal</span>
+      </div>
+      <div class="map-node" style="left:calc(50% - 150px);top:calc(50%)">
+        <div class="map-dot int"></div>
+        <span class="map-label int">Empleados<br>Directos</span>
+      </div>
+      <!-- EXTERNOS (outer ring) -->
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 250px)">
+        <div class="map-dot ext"></div>
+        <span class="map-label ext">Contegral<br>Grupo Bios</span>
+      </div>
+      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% - 130px)">
+        <div class="map-dot ext"></div>
+        <span class="map-label ext">Entidades<br>Financieras</span>
+      </div>
+      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% + 130px)">
+        <div class="map-dot ext"></div>
+        <span class="map-label ext">Empresas<br>Receptoras</span>
+      </div>
+      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% + 130px)">
+        <div class="map-dot ext"></div>
+        <span class="map-label ext">Entes<br>Reguladores</span>
+      </div>
+      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% - 130px)">
+        <div class="map-dot ext"></div>
+        <span class="map-label ext">Revisor Fiscal<br>& Cumplimiento</span>
+      </div>
+    </div>
+    <div style="display:flex; gap:1.5rem; justify-content:center; padding-bottom:3rem;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-int)"></div>
+        <span style="font-size:11px;color:var(--text-muted)">Stakeholders internos</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-ext)"></div>
+        <span style="font-size:11px;color:var(--text-muted)">Stakeholders externos</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>←</button>
+  <div class="nav-dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)">→</button>
+</nav>
+
+<script>
+  const total = 5;
+  let cur = 1;
+
+  const dotsEl = document.getElementById('dots');
+  for (let i = 1; i <= total; i++) {
+    const d = document.createElement('button');
+    d.className = 'nav-dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function go(dir) { goTo(cur + dir); }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.getElementById('s' + cur).classList.remove('active');
+    cur = n;
+    document.getElementById('s' + cur).classList.add('active');
+    document.querySelectorAll('.nav-dot').forEach((d, i) => {
+      d.classList.toggle('active', i + 1 === cur);
+    });
+    document.getElementById('prevBtn').disabled = cur === 1;
+    document.getElementById('nextBtn').disabled = cur === total;
+  }
+
+  function toggleExp(btn) {
+    const body = btn.nextElementSibling;
+    const open = body.classList.toggle('open');
+    btn.textContent = open ? 'Ocultar ↑' : 'Ver expectativas ↓';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+</script>
+</body>
+</html>
