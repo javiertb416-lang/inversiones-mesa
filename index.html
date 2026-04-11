@@ -209,21 +209,21 @@
   .stk-card.interno .stk-card-num { color: var(--accent-int); }
   .stk-card.externo .stk-card-num { color: var(--accent-ext); }
   .stk-card-name {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 15.5px;
+    font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.4rem;
     line-height: 1.3;
   }
   .stk-card-desc {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    line-height: 1.55;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
     margin-bottom: 0.75rem;
   }
   .stk-exp-toggle {
-    font-size: 10px;
-    letter-spacing: 1.5px;
+    font-size: 12px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
     color: var(--gold-light);
@@ -242,17 +242,18 @@
   .stk-exp-body.open { display: block; }
   .stk-exp-section { margin-bottom: 0.6rem; }
   .stk-exp-label {
-    font-size: 9px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 4px;
+    font-weight: 600;
   }
   .stk-card.interno .stk-exp-label { color: var(--accent-int); }
   .stk-card.externo .stk-exp-label { color: var(--accent-ext); }
   .stk-exp-text {
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.55;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 
   /* ── SLIDE 5: MAPA ── */
@@ -264,30 +265,31 @@
     position: relative;
   }
   .map-center {
-    width: 110px;
-    height: 110px;
-    border: 2px solid var(--gold);
+    width: 140px;
+    height: 140px;
+    border: 3px solid #FFE082;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,20,0.55);
     position: relative;
     z-index: 2;
+    box-shadow: 0 0 0 12px rgba(255,224,130,0.08);
   }
   .map-center span:first-child {
     font-family: var(--serif);
-    font-size: 11px;
-    color: var(--gold-light);
+    font-size: 13px;
+    color: #FFE082;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.25;
   }
   .map-center span:last-child {
-    font-size: 9px;
-    color: var(--text-muted);
-    margin-top: 3px;
+    font-size: 11px;
+    color: #BBDEFB;
+    margin-top: 4px;
   }
   .map-ring {
     position: absolute;
@@ -299,12 +301,14 @@
     pointer-events: none;
   }
   .map-ring.inner {
-    width: 300px; height: 300px;
-    border-color: rgba(74,140,111,0.3);
+    width: 280px; height: 280px;
+    border-color: rgba(0,191,165,0.45);
+    border-width: 1.5px;
   }
   .map-ring.outer {
-    width: 500px; height: 500px;
-    border-color: rgba(140,74,74,0.3);
+    width: 460px; height: 460px;
+    border-color: rgba(255,82,82,0.4);
+    border-width: 1.5px;
   }
   .map-node {
     position: absolute;
@@ -316,20 +320,23 @@
     cursor: default;
   }
   .map-dot {
-    width: 10px; height: 10px;
+    width: 14px; height: 14px;
     border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
   }
   .map-dot.int { background: var(--accent-int); }
   .map-dot.ext { background: var(--accent-ext); }
   .map-label {
-    font-size: 10px;
+    font-size: 13px;
+    font-weight: 600;
     text-align: center;
     line-height: 1.3;
-    max-width: 80px;
+    max-width: 110px;
     white-space: nowrap;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
   }
-  .map-label.int { color: #80CBC4; }
-  .map-label.ext { color: #EF9A9A; }
+  .map-label.int { color: #80DEEA; }
+  .map-label.ext { color: #FF8A80; }
 
   /* ── SLIDE 6: TALLER 3 ── */
   .ae-context {
@@ -715,40 +722,40 @@
         <span>Medellín · 1976</span>
       </div>
       <!-- INTERNOS (inner ring) -->
-      <div class="map-node" style="left:calc(50%);top:calc(50% - 150px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 140px)">
         <div class="map-dot int"></div>
         <span class="map-label int">Socios<br>Asamblea</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 150px);top:calc(50%)">
+      <div class="map-node" style="left:calc(50% + 140px);top:calc(50%)">
         <div class="map-dot int"></div>
         <span class="map-label int">Comité de<br>Inversiones</span>
       </div>
-      <div class="map-node" style="left:calc(50%);top:calc(50% + 150px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% + 140px)">
         <div class="map-dot int"></div>
         <span class="map-label int">Representante<br>Legal</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 150px);top:calc(50%)">
+      <div class="map-node" style="left:calc(50% - 140px);top:calc(50%)">
         <div class="map-dot int"></div>
         <span class="map-label int">Empleados<br>Directos</span>
       </div>
       <!-- EXTERNOS (outer ring) -->
-      <div class="map-node" style="left:calc(50%);top:calc(50% - 250px)">
+      <div class="map-node" style="left:calc(50%);top:calc(50% - 230px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Contegral<br>Grupo Bios</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% - 130px)">
+      <div class="map-node" style="left:calc(50% + 200px);top:calc(50% - 120px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Entidades<br>Financieras</span>
       </div>
-      <div class="map-node" style="left:calc(50% + 215px);top:calc(50% + 130px)">
+      <div class="map-node" style="left:calc(50% + 200px);top:calc(50% + 120px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Empresas<br>Receptoras</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% + 130px)">
+      <div class="map-node" style="left:calc(50% - 200px);top:calc(50% + 120px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Entes<br>Reguladores</span>
       </div>
-      <div class="map-node" style="left:calc(50% - 215px);top:calc(50% - 130px)">
+      <div class="map-node" style="left:calc(50% - 200px);top:calc(50% - 120px)">
         <div class="map-dot ext"></div>
         <span class="map-label ext">Revisor Fiscal<br>& Cumplimiento</span>
       </div>
@@ -756,11 +763,11 @@
     <div style="display:flex; gap:1.5rem; justify-content:center; padding-bottom:3rem;">
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-int)"></div>
-        <span style="font-size:11px;color:var(--text-muted)">Stakeholders internos</span>
+        <span style="font-size:14px;color:#BBDEFB;font-weight:500">Stakeholders internos</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--accent-ext)"></div>
-        <span style="font-size:11px;color:var(--text-muted)">Stakeholders externos</span>
+        <span style="font-size:14px;color:#BBDEFB;font-weight:500">Stakeholders externos</span>
       </div>
     </div>
   </div>
