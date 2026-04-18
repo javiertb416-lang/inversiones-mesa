@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inversiones Mesa Mesa · Talleres 2 · 3 · 4 · 5 · SIG EAFIT 2026</title>
+<title>Inversiones Mesa Mesa · Talleres 2 · 3 · 4 · 5 · 6 · 7 · SIG EAFIT 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>  :root {
     --bg:          #FFFFFF;
@@ -1986,6 +1986,306 @@
   .t5b-doc-cat.norm .t5b-doc-list li::before { background: var(--red); }
   .t5b-doc-list li b { color: var(--ink); font-weight: 600; }
 
+
+  /* ═══════════════════════════════════════════════════════════
+     TALLER 6 · SGI — ESTRUCTURA DE ALTO NIVEL
+  ═══════════════════════════════════════════════════════════ */
+
+  .t6-wrap { padding-top: 92px; }
+
+  .t6-hero {
+    max-width: 900px; margin: 0 auto;
+    padding: 28px 32px 16px; text-align: center;
+  }
+  .t6-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.1; margin-bottom: 10px; color: var(--ink);
+  }
+  .t6-title em {
+    font-style: normal;
+    background: linear-gradient(120deg, #047857 10%, #C48A18 60%, #1E40AF 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .t6-sub {
+    font-size: 14px; color: var(--ink-c);
+    max-width: 600px; margin: 0 auto 20px; line-height: 1.5;
+  }
+
+  /* Hub layout: grid con centro y 4 tarjetas alrededor */
+  .t6-hub {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 220px 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .t6-sys-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.2s;
+  }
+  .t6-sys-card:hover { box-shadow: 0 8px 24px -8px rgba(0,0,0,0.1); }
+
+  .t6-card-head {
+    padding: 12px 16px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 8px;
+  }
+  .t6-card-type {
+    font-size: 8px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 99px;
+  }
+  .t6-card-name {
+    font-size: 16px; font-weight: 800; color: #fff; line-height: 1.2;
+  }
+  .t6-card-code {
+    font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65);
+    margin-top: 2px;
+  }
+  .t6-card-body {
+    padding: 14px 16px; flex: 1;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .t6-card-label {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-d); margin-bottom: 2px;
+  }
+  .t6-card-text { font-size: 12px; color: var(--ink-b); line-height: 1.6; }
+  .t6-card-procs {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px;
+  }
+  .t6-proc-pill {
+    font-size: 10px; font-weight: 600; padding: 3px 9px;
+    border-radius: 99px; border: 1px solid;
+  }
+
+  /* Colores por sistema */
+  .t6-sys-card.c9001  .t6-card-head { background: #047857; }
+  .t6-sys-card.c9001  .t6-proc-pill { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+  .t6-sys-card.c31000 .t6-card-head { background: #B45309; }
+  .t6-sys-card.c31000 .t6-proc-pill { background: var(--gold-bg); border-color: var(--gold-border); color: var(--gold); }
+  .t6-sys-card.c27001 .t6-card-head { background: #1E40AF; }
+  .t6-sys-card.c27001 .t6-proc-pill { background: var(--blue-bg); border-color: var(--blue-border); color: var(--blue); }
+  .t6-sys-card.csag   .t6-card-head { background: #6D28D9; }
+  .t6-sys-card.csag   .t6-proc-pill { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
+
+  /* Centro del hub */
+  .t6-center {
+    grid-column: 2; grid-row: 1 / 3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+  }
+  .t6-annex-circle {
+    width: 148px; height: 148px; border-radius: 50%;
+    background: linear-gradient(135deg, #1D1D1F 0%, #424245 100%);
+    border: 3px solid var(--border-2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    box-shadow: 0 12px 32px -8px rgba(0,0,0,0.2);
+    gap: 4px;
+  }
+  .t6-annex-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+  .t6-annex-name {
+    font-size: 16px; font-weight: 800; color: #fff; line-height: 1.2;
+  }
+  .t6-annex-sub {
+    font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px;
+  }
+
+  .t6-connectors {
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+  }
+  .t6-conn-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--border-2);
+  }
+
+  /* Objetivo integrador */
+  .t6-objective {
+    max-width: 1100px; margin: 16px auto 0;
+    padding: 0 32px 90px;
+  }
+  .t6-obj-bar {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .t6-obj-label {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold-lt);
+    white-space: nowrap; padding-top: 2px;
+  }
+  .t6-obj-text {
+    font-size: 13.5px; font-weight: 500; color: #fff; line-height: 1.6;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════
+     TALLER 7 · BSC — CUADRO DE MANDO INTEGRAL (EAFIT style)
+  ═══════════════════════════════════════════════════════════ */
+
+  .t7-wrap { padding-top: 92px; }
+
+  .t7-hero {
+    max-width: 1100px; margin: 0 auto;
+    padding: 18px 32px 10px;
+  }
+  .t7-header-row {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .t7-process-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 99px; padding: 5px 14px;
+    font-size: 11px; font-weight: 600; color: var(--ink-b);
+  }
+  .t7-process-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+
+  /* Propósitos superiores — TOP */
+  .t7-purposes-top {
+    max-width: 1100px; margin: 0 auto 10px;
+    padding: 0 32px;
+  }
+  .t7-purp-bar {
+    background: var(--ink);
+    border-radius: 10px;
+    padding: 11px 20px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .t7-purp-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold-lt);
+    white-space: nowrap;
+  }
+  .t7-purp-items { display: flex; gap: 8px; flex-wrap: wrap; }
+  .t7-purp-item {
+    font-size: 10.5px; font-weight: 500; color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px; padding: 4px 11px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .t7-purp-item::before { content: '↑'; font-size: 9px; color: var(--gold-lt); }
+
+  /* Objetivo general del proceso */
+  .t7-proc-obj {
+    max-width: 1100px; margin: 0 auto 10px;
+    padding: 0 32px;
+  }
+  .t7-proc-obj-inner {
+    background: var(--blue-bg);
+    border: 1px solid var(--blue-border);
+    border-left: 4px solid var(--blue);
+    border-radius: 10px;
+    padding: 10px 18px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .t7-proc-obj-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--blue);
+    white-space: nowrap; padding-top: 2px;
+  }
+  .t7-proc-obj-text {
+    font-size: 12px; color: var(--ink-b); line-height: 1.55;
+  }
+
+  /* Grid de perspectivas — 4 columnas */
+  .t7-grid {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .t7-persp {
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .t7-persp-head {
+    padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .t7-persp-name { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .t7-persp-pct {
+    font-size: 22px; font-weight: 800;
+    color: rgba(255,255,255,0.25); line-height: 1;
+    text-align: right; margin-top: -4px;
+  }
+  .t7-persp-contrib {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.15); border-radius: 99px;
+    padding: 2px 9px; width: fit-content;
+    font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.9);
+    letter-spacing: 0.5px;
+  }
+
+  .t7-persp-body {
+    padding: 10px 12px; flex: 1;
+    background: var(--surface);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+
+  .t7-persp.financiera .t7-persp-head { background: #047857; }
+  .t7-persp.cliente    .t7-persp-head { background: #5B21B6; }
+  .t7-persp.procesos   .t7-persp-head { background: #B45309; }
+  .t7-persp.aprend     .t7-persp-head { background: #1E40AF; }
+
+  .t7-obj-line {
+    font-size: 11px; color: var(--ink-b); line-height: 1.55;
+    border-left: 3px solid var(--border-2);
+    padding-left: 9px; margin-bottom: 4px;
+  }
+  .t7-financiera-obj { border-left-color: #047857 !important; }
+  .t7-cliente-obj    { border-left-color: #5B21B6 !important; }
+  .t7-procesos-obj   { border-left-color: #B45309 !important; }
+  .t7-aprend-obj     { border-left-color: #1E40AF !important; }
+
+  .t7-kpi {
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .t7-kpi-label {
+    font-size: 7.5px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--ink-d);
+    white-space: nowrap; padding-top: 2px; min-width: 26px;
+  }
+  .t7-kpi-wrap { flex: 1; }
+  .t7-kpi-name { font-size: 10.5px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+  .t7-kpi-meta { font-size: 9.5px; color: var(--ink-d); margin-top: 1px; }
+
+  /* Barra de alineación estratégica */
+  .t7-alignment {
+    max-width: 1100px; margin: 10px auto 0;
+    padding: 0 32px 90px;
+  }
+  .t7-align-bar {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 20px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .t7-align-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-c); white-space: nowrap;
+  }
+  .t7-align-segments { display: flex; flex: 1; gap: 6px; align-items: center; }
+  .t7-align-seg {
+    height: 20px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #fff;
+  }
 </style>
 </head>
 <body>
@@ -2606,7 +2906,7 @@
           <div class="t5a-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         </div>
         <div>
-          <div class="t5a-card-name">Gestión del portafolio</div>
+          <div class="t5a-card-name">Gestión de Portafolio</div>
           <div class="t5a-card-owner">Gerente + Comité</div>
         </div>
         <div class="t5a-acts">
@@ -2650,7 +2950,7 @@
           <div class="t5a-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         </div>
         <div>
-          <div class="t5a-card-name">Cumplimiento SARLAFT</div>
+          <div class="t5a-card-name">Cumplimiento SAGRILAFT</div>
           <div class="t5a-card-owner">Oficial de Cumplimiento</div>
         </div>
         <div class="t5a-acts">
@@ -2963,8 +3263,8 @@
         </div>
       </div>
 
-      <h1 class="t5b-title">Cómo IMM evalúa,<br>aprueba y ejecuta<br>sus <em>inversiones</em>.</h1>
-      <p class="t5b-sub">Caracterización completa del proceso misional que protege los recursos de la organización. Dos rutas diferenciadas, seis fases, siete responsables, documentos asociados y marco normativo aplicable.</p>
+      <h1 class="t5b-title">Gestión de<br>Portafolio:<br>el proceso <em>misional</em>.</h1>
+      <p class="t5b-sub">Caracterización completa del proceso misional que salvaguarda el patrimonio de las familias Mesa. Dos rutas diferenciadas, seis fases, siete responsables, documentos asociados y marco normativo aplicable.</p>
       <div class="t5b-hero-meta">
         <div class="t5b-hero-meta-item"><div class="t5b-hero-meta-lbl">Versión</div><div class="t5b-hero-meta-val">001</div></div>
         <div class="t5b-hero-meta-item"><div class="t5b-hero-meta-lbl">Fecha</div><div class="t5b-hero-meta-val">24/11/2025</div></div>
@@ -2981,9 +3281,9 @@
       <div class="t5b-twocol">
         <div class="t5b-card">
           <div class="t5b-card-lbl"><span class="t5b-card-lbl-n">01</span>Objetivo</div>
-          <div class="t5b-card-t">Proteger los recursos mediante decisiones de inversión disciplinadas.</div>
+          <div class="t5b-card-t">Salvaguardar y acrecentar el patrimonio de las familias Mesa.</div>
           <div class="t5b-card-b">
-            <p>Establece el procedimiento para la <strong>evaluación, análisis, aprobación, ejecución y seguimiento</strong> de las inversiones que realiza IMM, diferenciando claramente entre inversiones estratégicas (no tradicionales) y tradicionales.</p>
+            <p>Asegurar que cada decisión de inversión responda a un propósito de <strong>protección, permanencia y trascendencia del legado familiar a través de las generaciones</strong>, diferenciando entre inversiones estratégicas (no tradicionales) y tradicionales.</p>
           </div>
         </div>
         <div class="t5b-card">
@@ -3136,7 +3436,7 @@
               <li>Gerente IMM · líder del proceso</li>
               <li>Representante Legal · firma autorizada</li>
               <li>Comité de Inversiones · órgano colegiado</li>
-              <li>Oficial de Cumplimiento · SARLAFT</li>
+              <li>Oficial de Cumplimiento · SAGRILAFT</li>
               <li>Contador · registros NIIF</li>
               <li>Revisor Fiscal · dictamen</li>
               <li>Asesor Jurídico · concepto contractual</li>
@@ -3364,7 +3664,7 @@
             <ul class="t5b-doc-list">
               <li><b>Protocolo de Gobierno Familiar</b></li>
               <li><b>Política de Inversiones</b></li>
-              <li><b>Manual SARLAFT</b></li>
+              <li><b>Manual SAGRILAFT</b></li>
               <li><b>Manual de Procedimientos Contables</b></li>
               <li><b>Matriz de Riesgos</b></li>
               <li><b>Matriz de Autoridad y Firmas</b></li>
@@ -3418,7 +3718,7 @@
         <div class="t5b-doc-cat norm">
           <div class="t5b-doc-cat-head"><div class="t5b-doc-cat-n">Antilavado y cumplimiento</div><span class="t5b-doc-cat-c norm">LA/FT</span></div>
           <ul class="t5b-doc-list">
-            <li><b>Circular Externa SARLAFT</b><br>Supersociedades 100-000016/2020</li>
+            <li><b>Circular Externa SAGRILAFT</b><br>Supersociedades 100-000016/2020</li>
             <li><b>Ley 1121 de 2006</b> y modificatorias<br>Prevención LA/FT</li>
             <li><b>Resoluciones UIAF</b><br>Reportes ROS y transacciones</li>
           </ul>
@@ -3505,6 +3805,379 @@
 
   </div>
 </div>
+
+<!-- SLIDE 11: TALLER 6 — SGI ESTRUCTURA DE ALTO NIVEL -->
+<div class="slide" id="s11">
+  <div class="t6-wrap">
+    <div class="t6-hero">
+      <p class="t5a-eyebrow" style="color:var(--ink-c)">Taller 6 · Estructura de Alto Nivel</p>
+      <h2 class="t6-title">Sistema de Gestión <em>Integral</em> de IMM</h2>
+      <p class="t6-sub">Un modelo único que integra cuatro sistemas bajo la estructura común HLS / Annex SL, definiendo el alcance de cada uno en la realidad de Inversiones Mesa Mesa.</p>
+    </div>
+
+    <div class="t6-hub">
+
+      <!-- ISO 9001 — superior izquierda -->
+      <div class="t6-sys-card c9001">
+        <div class="t6-card-head">
+          <div>
+            <div class="t6-card-name">ISO 9001</div>
+            <div class="t6-card-code">Gestión de Calidad</div>
+          </div>
+          <span class="t6-card-type">ISO</span>
+        </div>
+        <div class="t6-card-body">
+          <p class="t6-card-label">Alcance en IMM</p>
+          <p class="t6-card-text">Calidad de los procesos de evaluación, aprobación y seguimiento de inversiones. Gestión documental y mejora continua del portafolio.</p>
+          <div>
+            <p class="t6-card-label">Procesos cubiertos</p>
+            <div class="t6-card-procs">
+              <span class="t6-proc-pill">L5 · Inversiones</span>
+              <span class="t6-proc-pill">L6 · Portafolio</span>
+              <span class="t6-proc-pill">L9 · Administrativa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centro -->
+      <div class="t6-center">
+        <div class="t6-annex-circle">
+          <span class="t6-annex-label">Base común</span>
+          <span class="t6-annex-name">HLS<br>Annex SL</span>
+          <span class="t6-annex-sub">ISO · IEC · ITU</span>
+        </div>
+        <div class="t6-connectors">
+          <div class="t6-conn-dot"></div>
+          <div class="t6-conn-dot"></div>
+          <div class="t6-conn-dot"></div>
+        </div>
+        <div style="text-align:center;">
+          <p style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-d);margin-bottom:6px">Cláusulas comunes</p>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:10px;color:var(--ink-c);font-weight:500">4 · Contexto</span>
+            <span style="font-size:10px;color:var(--ink-c);font-weight:500">5 · Liderazgo</span>
+            <span style="font-size:10px;color:var(--ink-c);font-weight:500">6 · Planificación</span>
+            <span style="font-size:10px;color:var(--ink-c);font-weight:500">9 · Evaluación</span>
+            <span style="font-size:10px;color:var(--ink-c);font-weight:500">10 · Mejora</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ISO 31000 — superior derecha -->
+      <div class="t6-sys-card c31000">
+        <div class="t6-card-head">
+          <div>
+            <div class="t6-card-name">ISO 31000</div>
+            <div class="t6-card-code">Gestión de Riesgos</div>
+          </div>
+          <span class="t6-card-type">ISO</span>
+        </div>
+        <div class="t6-card-body">
+          <p class="t6-card-label">Alcance en IMM</p>
+          <p class="t6-card-text">Identificación, valoración y tratamiento de riesgos financieros, regulatorios (DIAN, UIAF) y operacionales. Marco para el Comité de Inversiones.</p>
+          <div>
+            <p class="t6-card-label">Procesos cubiertos</p>
+            <div class="t6-card-procs">
+              <span class="t6-proc-pill">L3 · Riesgos</span>
+              <span class="t6-proc-pill">L5 · Inversiones</span>
+              <span class="t6-proc-pill">L7 · Contable · Fiscal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ISO 27001 — inferior izquierda -->
+      <div class="t6-sys-card c27001">
+        <div class="t6-card-head">
+          <div>
+            <div class="t6-card-name">ISO 27001</div>
+            <div class="t6-card-code">Seguridad de la Información</div>
+          </div>
+          <span class="t6-card-type">ISO</span>
+        </div>
+        <div class="t6-card-body">
+          <p class="t6-card-label">Alcance en IMM</p>
+          <p class="t6-card-text">Protección de la información financiera y patrimonial de las 5 SAS familiares: estados financieros, expedientes de inversión y datos de contrapartes.</p>
+          <div>
+            <p class="t6-card-label">Procesos cubiertos</p>
+            <div class="t6-card-procs">
+              <span class="t6-proc-pill">L7 · Contable · Fiscal</span>
+              <span class="t6-proc-pill">L9 · Administrativa</span>
+              <span class="t6-proc-pill">L1 · Planeación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAGRILAFT — inferior derecha -->
+      <div class="t6-sys-card csag">
+        <div class="t6-card-head">
+          <div>
+            <div class="t6-card-name">SAGRILAFT</div>
+            <div class="t6-card-code">Autocontrol LA/FT/FPADM</div>
+          </div>
+          <span class="t6-card-type">No ISO</span>
+        </div>
+        <div class="t6-card-body">
+          <p class="t6-card-label">Alcance en IMM</p>
+          <p class="t6-card-text">Sistema de autocontrol obligatorio ante Supersociedades. Gestión del riesgo de lavado de activos, financiación del terrorismo y corrupción en todas las operaciones de inversión.</p>
+          <div>
+            <p class="t6-card-label">Procesos cubiertos</p>
+            <div class="t6-card-procs">
+              <span class="t6-proc-pill">L8 · Cumplimiento</span>
+              <span class="t6-proc-pill">L4 · Dividendos</span>
+              <span class="t6-proc-pill">L5 · Inversiones</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end hub -->
+
+    <!-- Objetivo integrador -->
+    <div class="t6-objective">
+      <div class="t6-obj-bar">
+        <span class="t6-obj-label">Objetivo integrador</span>
+        <p class="t6-obj-text">Gestionar el patrimonio familiar con excelencia operativa, cumplimiento normativo y control de riesgos, garantizando la sostenibilidad y multiplicación del valor para las generaciones presentes y futuras.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SLIDE 12: TALLER 7 — BSC L7 CONTABLE Y FISCAL (EAFIT style) -->
+<div class="slide" id="s12">
+  <div class="t7-wrap">
+
+    <!-- Header -->
+    <div class="t7-hero">
+      <div class="t7-header-row">
+        <div>
+          <p class="t5a-eyebrow" style="color:var(--blue);margin-bottom:6px">Taller 7 · Cuadro de Mando Integral</p>
+          <h2 class="t6-title" style="text-align:left;font-size:clamp(22px,3vw,32px)">BSC · <em>L7</em> — Gestión Contable y Fiscal</h2>
+        </div>
+        <div class="t7-process-tag">
+          <div class="t7-process-dot"></div>
+          Proceso de apoyo · L7
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. PROPÓSITOS SUPERIORES — ARRIBA -->
+    <div class="t7-purposes-top">
+      <div class="t7-purp-bar">
+        <span class="t7-purp-label">Propósitos superiores de IMM</span>
+        <div class="t7-purp-items">
+          <span class="t7-purp-item">Preservar y multiplicar el patrimonio familiar</span>
+          <span class="t7-purp-item">Gestión proactiva del riesgo regulatorio</span>
+          <span class="t7-purp-item">Información confiable para decisiones estratégicas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. OBJETIVO GENERAL DEL PROCESO -->
+    <div class="t7-proc-obj">
+      <div class="t7-proc-obj-inner">
+        <span class="t7-proc-obj-label">Objetivo general del proceso</span>
+        <p class="t7-proc-obj-text">Garantizar una planeación tributaria y fiscal prudente y oportuna que permita a IMM anticipar sus obligaciones, optimizar su carga fiscal dentro del marco legal y mitigar riesgos regulatorios a través de la gestión estratégica.</p>
+      </div>
+    </div>
+
+    <!-- 3. PERSPECTIVAS — 4 columnas -->
+    <div class="t7-grid">
+
+      <!-- FINANCIERA 35% -->
+      <div class="t7-persp financiera">
+        <div class="t7-persp-head">
+          <span class="t7-persp-name">Financiera</span>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="t7-persp-contrib">35% contribución</span>
+            <span class="t7-persp-pct">35</span>
+          </div>
+        </div>
+        <div class="t7-persp-body">
+          <p class="t7-obj-line t7-financiera-obj">Reducir contingencias tributarias y optimizar la carga fiscal de IMM mediante planeación estratégica anticipada.</p>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 1</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">Valor sanciones DIAN</p>
+              <p class="t7-kpi-meta">Meta: $0 / año</p>
+            </div>
+          </div>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 2</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">Ahorro fiscal efectivo</p>
+              <p class="t7-kpi-meta">Meta: ≥ 5% anual</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOCIOS / CLIENTE 15% -->
+      <div class="t7-persp cliente">
+        <div class="t7-persp-head">
+          <span class="t7-persp-name">Socios / Asamblea</span>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="t7-persp-contrib">15% contribución</span>
+            <span class="t7-persp-pct">15</span>
+          </div>
+        </div>
+        <div class="t7-persp-body">
+          <p class="t7-obj-line t7-cliente-obj">Proveer información fiscal confiable y oportuna que respalde las decisiones patrimoniales con visión de largo plazo.</p>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 1</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">% reportes fiscales en plazo</p>
+              <p class="t7-kpi-meta">Meta: 100%</p>
+            </div>
+          </div>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 2</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">Satisfacción socios · info tributaria</p>
+              <p class="t7-kpi-meta">Meta: ≥ 4.5 / 5.0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROCESOS INTERNOS 35% -->
+      <div class="t7-persp procesos">
+        <div class="t7-persp-head">
+          <span class="t7-persp-name">Procesos Internos</span>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="t7-persp-contrib">35% contribución</span>
+            <span class="t7-persp-pct">35</span>
+          </div>
+        </div>
+        <div class="t7-persp-body">
+          <p class="t7-obj-line t7-procesos-obj">Implementar un ciclo de planeación tributaria anual que anticipe vencimientos, cambios normativos y exposiciones fiscales.</p>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 1</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">% obligaciones tributarias en plazo</p>
+              <p class="t7-kpi-meta">Meta: 100%</p>
+            </div>
+          </div>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 2</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">Alertas tempranas por cambios normativos</p>
+              <p class="t7-kpi-meta">Meta: ≥ 4 / año</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APRENDIZAJE 15% -->
+      <div class="t7-persp aprend">
+        <div class="t7-persp-head">
+          <span class="t7-persp-name">Aprendizaje y Crecimiento</span>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span class="t7-persp-contrib">15% contribución</span>
+            <span class="t7-persp-pct">15</span>
+          </div>
+        </div>
+        <div class="t7-persp-body">
+          <p class="t7-obj-line t7-aprend-obj">Desarrollar capacidades en planeación fiscal estratégica y adoptar herramientas de seguimiento automatizado de obligaciones.</p>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 1</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">Horas capacitación fiscal / responsable</p>
+              <p class="t7-kpi-meta">Meta: ≥ 20 hrs / año</p>
+            </div>
+          </div>
+          <div class="t7-kpi">
+            <span class="t7-kpi-label">KPI 2</span>
+            <div class="t7-kpi-wrap">
+              <p class="t7-kpi-name">% procesos fiscales con herramienta</p>
+              <p class="t7-kpi-meta">Meta: ≥ 80%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+    <!-- 4. ALINEACIÓN ESTRATÉGICA — barra proporcional -->
+    <div class="t7-alignment">
+      <div class="t7-align-bar">
+        <span class="t7-align-label">Alineación estratégica</span>
+        <div class="t7-align-segments">
+          <div class="t7-align-seg" style="flex:35;background:#047857">Financiera 35%</div>
+          <div class="t7-align-seg" style="flex:15;background:#5B21B6">Socios 15%</div>
+          <div class="t7-align-seg" style="flex:35;background:#B45309">Procesos 35%</div>
+          <div class="t7-align-seg" style="flex:15;background:#1E40AF">Aprendizaje 15%</div>
+        </div>
+      </div>
+
+      <!-- Barra de avance del proceso -->
+      <div style="margin-top:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:14px 20px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink-c)">Avance del proceso</span>
+          <span style="font-size:11px;font-weight:800;color:var(--blue);margin-left:auto">10% · Etapa 1 de 4</span>
+        </div>
+        <!-- Barra de progreso -->
+        <div style="background:var(--surface-3);border-radius:99px;height:8px;overflow:hidden;margin-bottom:14px;">
+          <div style="width:10%;height:100%;background:linear-gradient(90deg,#1E40AF,#3B82F6);border-radius:99px;"></div>
+        </div>
+        <!-- Etapas -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+
+          <div style="border-radius:8px;overflow:hidden;border:1.5px solid #1E40AF;">
+            <div style="background:#1E40AF;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:9px;font-weight:700;color:#fff;letter-spacing:1px;">ETAPA 1 · ACTUAL</span>
+              <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.4);">10%</span>
+            </div>
+            <div style="background:#EFF6FF;padding:8px 10px;">
+              <p style="font-size:11px;font-weight:700;color:#1E40AF;margin-bottom:3px;">Estructuración</p>
+              <p style="font-size:10px;color:var(--ink-c);line-height:1.5;">Diagnóstico fiscal, levantamiento de obligaciones y diseño del ciclo de planeación tributaria.</p>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0.6;">
+            <div style="background:var(--surface-3);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:9px;font-weight:700;color:var(--ink-c);letter-spacing:1px;">ETAPA 2</span>
+              <span style="font-size:11px;font-weight:800;color:var(--ink-d);">40%</span>
+            </div>
+            <div style="background:var(--surface);padding:8px 10px;">
+              <p style="font-size:11px;font-weight:700;color:var(--ink-b);margin-bottom:3px;">Implementación</p>
+              <p style="font-size:10px;color:var(--ink-c);line-height:1.5;">Puesta en marcha del ciclo, formalización del asesor tributario y primeras declaraciones bajo el nuevo esquema.</p>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0.6;">
+            <div style="background:var(--surface-3);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:9px;font-weight:700;color:var(--ink-c);letter-spacing:1px;">ETAPA 3</span>
+              <span style="font-size:11px;font-weight:800;color:var(--ink-d);">70%</span>
+            </div>
+            <div style="background:var(--surface);padding:8px 10px;">
+              <p style="font-size:11px;font-weight:700;color:var(--ink-b);margin-bottom:3px;">Seguimiento</p>
+              <p style="font-size:10px;color:var(--ink-c);line-height:1.5;">Monitoreo de KPIs, alertas tempranas activas y ajustes al plan según cambios normativos.</p>
+            </div>
+          </div>
+
+          <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0.6;">
+            <div style="background:var(--surface-3);padding:6px 10px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:9px;font-weight:700;color:var(--ink-c);letter-spacing:1px;">ETAPA 4</span>
+              <span style="font-size:11px;font-weight:800;color:var(--ink-d);">100%</span>
+            </div>
+            <div style="background:var(--surface);padding:8px 10px;">
+              <p style="font-size:11px;font-weight:700;color:var(--ink-b);margin-bottom:3px;">Optimización</p>
+              <p style="font-size:10px;color:var(--ink-c);line-height:1.5;">Ciclo consolidado, ahorro fiscal medido, cero sanciones, proceso autónomo y documentado.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </div>
 
 <nav class="nav">
@@ -3514,7 +4187,7 @@
 </nav>
 
 <script>
-const total = 10;
+const total = 12;
 let cur = 1;
 const dotsEl = document.getElementById('dots');
 for (let i = 1; i <= total; i++) {
@@ -3589,7 +4262,7 @@ const T5A_DATA = {
     out:'Nueva posición en el portafolio · Activo suscrito y registrado',
     conn:['L1','L2','L3','L6','L7','L8'], ctrl:'Aprobación formal del Comité con quórum y mayorías requeridas',
     acts:[{n:'01',name:'Identificar oportunidad',desc:'Brief inicial'},{n:'02',name:'Due diligence',desc:'Análisis integral'},{n:'03',name:'Decisión Comité',desc:'Aprobar o rechazar'},{n:'04',name:'Ejecutar inversión',desc:'Suscripción'}] },
-  L6: { group:'mis', title:'Gestión activa del portafolio',
+  L6: { group:'mis', title:'Gestión de Portafolio',
     desc:'Una vez el capital está invertido, vigila desempeño, ajusta composición según contexto macro y rinde cuentas a los socios.',
     owner:'Gerente + Comité de Inversiones',
     inp:'Información de emisores, gestores, mercado',
@@ -3603,13 +4276,13 @@ const T5A_DATA = {
     out:'Estados financieros firmados, declaraciones ante DIAN',
     conn:['L4','L5','L6','L3'], ctrl:'Dictamen sin salvedades del Revisor Fiscal y cuadre diario',
     acts:[{n:'01',name:'Contabilizar',desc:'Registro según NIIF'},{n:'02',name:'Estados financieros',desc:'Balance, P&G, flujo'},{n:'03',name:'Revisoría fiscal',desc:'Auditoría externa'},{n:'04',name:'Declarar DIAN',desc:'Renta, patrimonio'}] },
-  L8: { group:'apo', title:'Cumplimiento y SARLAFT',
+  L8: { group:'apo', title:'Cumplimiento y SAGRILAFT',
     desc:'Conocimiento de contrapartes, monitoreo de operaciones, identificación de operaciones sospechosas y reporte a la UIAF.',
     owner:'Oficial de Cumplimiento (externo)',
     inp:'Nuevas relaciones comerciales, operaciones del período',
     out:'Reportes ROS a UIAF, expedientes KYC actualizados',
     conn:['L3','L4','L5'], ctrl:'Acuse de recibo de la UIAF y listas restrictivas verificadas',
-    acts:[{n:'01',name:'KYC contrapartes',desc:'Expedientes completos'},{n:'02',name:'Monitoreo',desc:'Umbrales SARLAFT'},{n:'03',name:'Identificar ROS',desc:'Análisis de alertas'},{n:'04',name:'Reportar UIAF',desc:'Envío formal'}] },
+    acts:[{n:'01',name:'KYC contrapartes',desc:'Expedientes completos'},{n:'02',name:'Monitoreo',desc:'Umbrales SAGRILAFT'},{n:'03',name:'Identificar ROS',desc:'Análisis de alertas'},{n:'04',name:'Reportar UIAF',desc:'Envío formal'}] },
   L9: { group:'apo', title:'Gestión administrativa',
     desc:'Coordina agendas, canaliza comunicaciones entre las 5 SAS y los externos, custodia el archivo y brinda soporte logístico.',
     owner:'Asistente Administrativa',
@@ -3618,7 +4291,7 @@ const T5A_DATA = {
     conn:['L1','L2','L3','L4','L5','L6','L7','L8'], ctrl:'Tabla de retención documental y confirmación de asistencia',
     acts:[{n:'01',name:'Gestionar agenda',desc:'Asamblea, Comité'},{n:'02',name:'Comunicación',desc:'Canales internos y externos'},{n:'03',name:'Archivo documental',desc:'Físico + digital'},{n:'04',name:'Soporte logístico',desc:'Suministros, pagos'}] },
 };
-const T5A_TITLES = { L1:'Planeación estratégica', L2:'Gobierno familiar', L3:'Gestión de riesgos', L4:'Captación dividendos', L5:'Evaluación inversiones', L6:'Gestión portafolio', L7:'Contable y fiscal', L8:'Cumplimiento SARLAFT', L9:'Administrativa' };
+const T5A_TITLES = { L1:'Planeación estratégica', L2:'Gobierno familiar', L3:'Gestión de riesgos', L4:'Captación dividendos', L5:'Evaluación inversiones', L6:'Gestión de Portafolio', L7:'Contable y fiscal', L8:'Cumplimiento SAGRILAFT', L9:'Administrativa' };
 
 function showDetA(id) {
   const d = T5A_DATA[id]; if (!d) return;
